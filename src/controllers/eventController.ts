@@ -1,5 +1,11 @@
-import { type Request, type Response } from "express";  // ✅ Added 'type' keyword
+import { type Request, type Response } from "express";
 import EventServices from "../services/eventServices.js";
+import {
+  addEventSchema,
+  editEventSchema,
+  deleteEventSchema,
+  viewAllEventsSchema
+} from "../validations/eventValidation.js";
 
 // Helper to parse numeric fields
 const parseNumericFields = (req: Request) => {
@@ -27,32 +33,36 @@ const parseNumericFields = (req: Request) => {
 };
 
 export default {
-
   viewAllEvents: async (req: Request, res: Response) => {
     try {
-      const { search, page, limit } = req.query;
-      const events = await EventServices.viewAllEvents({
-        search: search as string,
-        page: page ? Number(page) : 1,
-        limit: limit ? Number(limit) : 10,
+      const validation = viewAllEventsSchema.safeParse({
+        search: req.query.search,
+        filter: req.query.filter,
+        page: req.query.page ? Number(req.query.page) : 1,
+        limit: req.query.limit ? Number(req.query.limit) : 10,
       });
+
+      if (!validation.success) {
+        return res.status(400).json({
+          success: false,
+          message: "Validation error",
+          errors: validation.error
+        });
+      }
+
+      const events = await EventServices.viewAllEvents(validation.data);
       res.json({ success: true, data: events });
     } catch (error) {
       res.status(500).json({ success: false, message: String(error) });
     }
-    //   const events = await EventServices.viewAllEvents(); // Call the service method
-    //   res.json({ success: true, data: events });
-    // } catch (error) {
-    //   res.status(500).json({ success: false, message: String(error) });
-    // } 
   },
 
   viewEventById: async (req: Request, res: Response) => {
     try {
-      const idParam = req.params.id; 
+      const idParam = req.params.id;
       if (!idParam) {
         return res.status(400).json({ success: false, message: "Missing id parameter" });
-      } 
+      }
 
       const id = Number(idParam);
       if (Number.isNaN(id)) {
@@ -69,7 +79,43 @@ export default {
   addEvent: async (req: Request, res: Response) => {
     try {
       const payload = parseNumericFields(req);
-      const event = await EventServices.addEvent(payload);
+
+      // Ensure date is properly formatted
+      if (payload.date) {
+        if (payload.date instanceof Date) {
+          payload.date = payload.date.toISOString();
+        }
+        else if (typeof payload.date === 'string') {
+          const parsedDate = new Date(payload.date);
+          if (!isNaN(parsedDate.getTime())) {
+            payload.date = parsedDate.toISOString();
+          }
+        }
+      }
+
+      // Ensure publishDate is properly formatted (changed from publishedDate)
+      if (payload.publishDate) {
+        if (payload.publishDate instanceof Date) {
+          payload.publishDate = payload.publishDate.toISOString();
+        }
+        else if (typeof payload.publishDate === 'string') {
+          const parsedDate = new Date(payload.publishDate);
+          if (!isNaN(parsedDate.getTime())) {
+            payload.publishDate = parsedDate.toISOString();
+          }
+        }
+      }
+
+      const validation = addEventSchema.safeParse(payload);
+      if (!validation.success) {
+        return res.status(400).json({
+          success: false,
+          message: "Validation error",
+          errors: validation.error.format()
+        });
+      }
+
+      const event = await EventServices.addEvent(validation.data);
       res.status(201).json({ success: true, data: event });
     } catch (error) {
       res.status(400).json({ success: false, message: String(error) });
@@ -79,7 +125,17 @@ export default {
   editEvent: async (req: Request, res: Response) => {
     try {
       const payload = parseNumericFields(req);
-      const updated = await EventServices.editEvent(payload);
+
+      const validation = editEventSchema.safeParse(payload);
+      if (!validation.success) {
+        return res.status(400).json({
+          success: false,
+          message: "Validation error",
+          errors: validation.error
+        });
+      }
+
+      const updated = await EventServices.editEvent(validation.data);
       res.json({ success: true, data: updated });
     } catch (error) {
       res.status(400).json({ success: false, message: String(error) });
@@ -92,12 +148,23 @@ export default {
       if (!idParam) {
         return res.status(400).json({ success: false, message: "Missing id parameter" });
       }
+
       const id = Number(idParam);
       if (Number.isNaN(id)) {
         return res.status(400).json({ success: false, message: "Invalid id parameter" });
       }
-      const deleted = await EventServices.deleteEvent({ id });
-      res.json({ success: true, data: deleted });
+
+      const validation = deleteEventSchema.safeParse({ id });
+      if (!validation.success) {
+        return res.status(400).json({
+          success: false,
+          message: "Validation error",
+          errors: validation.error
+        });
+      }
+
+      const deleted = await EventServices.deleteEvent(validation.data);
+      res.json({ success: true, message: "Event deleted successfully", data: deleted });
     } catch (error) {
       res.status(400).json({ success: false, message: String(error) });
     }

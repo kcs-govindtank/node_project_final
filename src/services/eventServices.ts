@@ -1,195 +1,149 @@
+import { PrismaClient } from "../generated/prisma/client.js";
 import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaClient, PublishStatus } from "../generated/prisma/client.js";
-import { assertExist } from "../utils/assertExist.js";
-import { validateEvent, addEventSchema, editEventSchema, deleteEventSchema } from "../validations/eventValidation.js";
+import { AddEventInput, EditEventInput, DeleteEventInput, ViewAllEventsInput } from "../validations/eventValidation.js";
+import fs from 'fs';
+import path from 'path';
 
 const connectionString = process.env.DATABASE_URL;
 const adapter = new PrismaPg({ connectionString });
 const prisma = new PrismaClient({ adapter });
 
+// Helper function to handle file upload and return a string path/url
+// Replace this with your actual upload logic (e.g., AWS S3, Cloudinary)
+const uploadFile = async (file: string | File | undefined): Promise<string | null | undefined> => {
+  if (!file) return undefined;
+  
+  // If it's already a string (e.g., a URL), return it
+  if (typeof file === 'string') return file;
+
+  // If it's a File object, handle the upload
+  // This is a placeholder for actual upload logic
+  // For now, we'll just return the file name as a string
+  // In a real app, you would save the file to disk or cloud storage
+  return file.name; 
+};
+
+// Map incoming publishStatus values to Prisma enum values
+const mapPublishStatus = (status?: string) => {
+  if (!status) return undefined;
+  const s = status.toLowerCase();
+  if (s === "publish" || s === "published") return "PUBLISHED";
+  if (s === "draft") return "DRAFT";
+  return undefined;
+};
+
 class EventServices {
+  static viewAllEvents = async (input: ViewAllEventsInput) => {
+    const { search, filter, page, limit } = input;
 
-  static viewAllEvents = async (payload: {
-    search?: string;
-    page: number;
-    limit: number;
-  }) => {
-    const { search, page, limit } = payload;
-
-    // Calculate the skip value for pagination
-    const skip = (page - 1) * limit;
-
-    //Define the where clause for search
-    const where: any = {};
-
-    //Add search condition if search term is provided
-    if (search) {
-      where.OR = [
-        { title: { contains: search, mode: "insensitive" } },
-        { description: { contains: search, mode: "insensitive" } },
-        { content: { contains: search, mode: "insensitive" } },
-      ];
-    }
-
-    const events= await prisma.event.findMany({
-      where,
-      skip,
+    // Implement your search/filter logic here
+    const events = await prisma.event.findMany({
+      where: {
+        ...(search ? {
+          OR: [
+            { title: { contains: search } },
+            { description: { contains: search } },
+            { content: { contains: search } }
+          ]
+        } : {}),
+        // Add filter conditions if needed
+      },
+      skip: (page - 1) * limit,
       take: limit,
-      orderBy: { createdAt: "desc" },
-      include: {
-        category: true,
-        subcategory: true,
-        country: true,
-        state: true,
-      },  
     });
 
-    //Get the total count for pagination
-    const totalEvents = await prisma.event.count({ where });
-
-    return {
-      events, 
-      pagination: {
-        total: totalEvents,
-        page,
-        limit,
-        totalPages: Math.ceil(totalEvents / limit),
-      },
-    };
+    return events;
   };
-  
 
   static viewEventById = async (id: number) => {
-    const event = await prisma.event.findUnique({ where: { id } });
-    assertExist(event, "Event not found");
-    return event;
-  };
-
-  static addEvent = async (payload: any) => {
-    // ✅ Validate input using Zod
-    const validatedData = validateEvent(addEventSchema, payload);
-
-    // 🔹 Validate foreign keys exist (only include defined keys)
-    const fkToValidateAdd: { categoryId?: number; subcategoryId?: number; countryId?: number; stateId?: number } = {};
-    if (validatedData.categoryId !== undefined) fkToValidateAdd.categoryId = validatedData.categoryId;
-    if (validatedData.subcategoryId !== undefined) fkToValidateAdd.subcategoryId = validatedData.subcategoryId;
-    if (validatedData.countryId !== undefined) fkToValidateAdd.countryId = validatedData.countryId;
-    if (validatedData.stateId !== undefined) fkToValidateAdd.stateId = validatedData.stateId;
-    await this.validateForeignKeys(fkToValidateAdd);
-
-    // Build data object
-    const data: any = {
-      title: validatedData.title,
-      description: validatedData.description,
-      content: validatedData.content,
-      mediaType: validatedData.mediaType,
-      file: validatedData.file,
-      location: validatedData.location,
-      language: validatedData.language,
-      publishStatus: validatedData.publishStatus === "publish" ? PublishStatus.PUBLISHED : PublishStatus.DRAFT,
-      categoryId: validatedData.categoryId,
-      subcategoryId: validatedData.subcategoryId,
-      countryId: validatedData.countryId,
-      stateId: validatedData.stateId,
-    };
-
-    if (validatedData.publishedDate) {
-      data.publishDate = new Date(validatedData.publishedDate);
-      data.date = new Date(validatedData.publishedDate);
-    }
-
-    const event = await prisma.event.create({ data });
-    return event;
-  };
-
-  static editEvent = async (payload: any) => {
-    // ✅ Validate input using Zod
-    const validatedData = validateEvent(editEventSchema, payload);
-
-    // Validate event exists
-    const existing = await prisma.event.findUnique({ where: { id: validatedData.id } });
-    assertExist(existing, "Invalid event id");
-
-    // 🔹 Validate foreign keys if provided (only include defined keys)
-    const fkToValidateEdit: { categoryId?: number; subcategoryId?: number; countryId?: number; stateId?: number } = {};
-    if (validatedData.categoryId !== undefined) fkToValidateEdit.categoryId = validatedData.categoryId;
-    if (validatedData.subcategoryId !== undefined) fkToValidateEdit.subcategoryId = validatedData.subcategoryId;
-    if (validatedData.countryId !== undefined) fkToValidateEdit.countryId = validatedData.countryId;
-    if (validatedData.stateId !== undefined) fkToValidateEdit.stateId = validatedData.stateId;
-    await this.validateForeignKeys(fkToValidateEdit);
-
-    // Build update data (only include fields that were provided)
-    const updateData: any = {};
-    if (validatedData.title) updateData.title = validatedData.title;
-    if (validatedData.description) updateData.description = validatedData.description;
-    if (validatedData.content) updateData.content = validatedData.content;
-    if (validatedData.mediaType) updateData.mediaType = validatedData.mediaType;
-    if (validatedData.file) updateData.file = validatedData.file;
-    if (validatedData.location) updateData.location = validatedData.location;
-    if (validatedData.language) updateData.language = validatedData.language;
-    if (validatedData.categoryId) updateData.categoryId = validatedData.categoryId;
-    if (validatedData.subcategoryId) updateData.subcategoryId = validatedData.subcategoryId;
-    if (validatedData.countryId) updateData.countryId = validatedData.countryId;
-    if (validatedData.stateId) updateData.stateId = validatedData.stateId;
-
-    if (validatedData.publishedDate) {
-      updateData.publishDate = new Date(validatedData.publishedDate);
-      updateData.date = new Date(validatedData.publishedDate);
-    }
-    if (validatedData.publishStatus) {
-      updateData.publishStatus = validatedData.publishStatus === "publish" ? PublishStatus.PUBLISHED : PublishStatus.DRAFT;
-    }
-
-    const updated = await prisma.event.update({
-      where: { id: validatedData.id },
-      data: updateData,
+    const event = await prisma.event.findUnique({
+      where: { id },
     });
 
-    return updated;
+    if (!event) {
+      throw new Error("Event not found");
+    }
+
+    return event;
   };
 
-  static deleteEvent = async (payload: any) => {
-    // ✅ Validate input using Zod
-    const validatedData = validateEvent(deleteEventSchema, payload);
+  static addEvent = async (data: AddEventInput) => {
+    // Handle file upload/conversion
+    const fileString = await uploadFile(data.file);
 
-    const existing = await prisma.event.findUnique({ where: { id: validatedData.id } });
-    assertExist(existing, "Invalid event id");
+    // Map publishStatus to Prisma enum values
+    const publishStatus = mapPublishStatus(data.publishStatus);
 
-    const deleted = await prisma.event.delete({ where: { id: validatedData.id } });
-    return deleted;
+    // Build the data object, omitting undefined values
+    const eventData: any = {
+      ...data,
+      // Ensure date is properly converted if needed
+      date: data.date ? new Date(data.date) : new Date(),
+      publishDate: data.publishDate ? new Date(data.publishDate) : new Date(),
+
+      // Convert undefined content to null to match Prisma schema
+      content: data.content ?? null,
+      // Ensure file is either a string or null, not undefined
+      file: fileString ?? null,
+      // ... other fields ...
+    };
+
+    // Only add publishStatus if it's defined
+    if (publishStatus !== undefined) {
+      eventData.publishStatus = publishStatus;
+    }
+
+    return await prisma.event.create({
+      data: eventData
+    });
   };
 
-  // Helper method to validate foreign keys
-  private static validateForeignKeys = async ({
-    categoryId,
-    subcategoryId,
-    countryId,
-    stateId,
-  }: {
-    categoryId?: number;
-    subcategoryId?: number;
-    countryId?: number;
-    stateId?: number;
-  }) => {
-    if (categoryId) {
-      const categoryExists = await prisma.category.findUnique({ where: { id: categoryId } });
-      assertExist(categoryExists, "Invalid categoryId");
+  static editEvent = async (input: EditEventInput) => {
+    const { id, ...data } = input;
+
+    // Handle file upload/conversion
+    const fileString = await uploadFile(data.file);
+
+    // Filter out undefined values to avoid type errors
+    const eventData: any = {
+      title: data.title,
+      description: data.description,
+      content: data.content,
+      mediaType: data.mediaType,
+      file: fileString,
+      location: data.location,
+      language: data.language,
+      categoryId: data.categoryId,
+      subcategoryId: data.subcategoryId,
+      countryId: data.countryId,
+      stateId: data.stateId,
+    };
+
+    // Only add publishDate if it's defined
+    if (data.publishDate !== undefined) {
+      eventData.publishDate = data.publishDate;
     }
 
-    if (subcategoryId) {
-      const subcategoryExists = await prisma.subcategory.findUnique({ where: { id: subcategoryId } });
-      assertExist(subcategoryExists, "Invalid subcategoryId");
+    // Only add publishStatus if it's defined
+    const publishStatus = mapPublishStatus(data.publishStatus);
+    if (publishStatus !== undefined) {
+      eventData.publishStatus = publishStatus;
     }
 
-    if (countryId) {
-      const countryExists = await prisma.country.findUnique({ where: { id: countryId } });
-      assertExist(countryExists, "Invalid countryId");
-    }
+    const updatedEvent = await prisma.event.update({
+      where: { id },
+      data: eventData,
+    });
 
-    if (stateId) {
-      const stateExists = await prisma.state.findUnique({ where: { id: stateId } });
-      assertExist(stateExists, "Invalid stateId");
-    }
+    return updatedEvent;
+  };
+
+  static deleteEvent = async (input: DeleteEventInput) => {
+    const deletedEvent = await prisma.event.delete({
+      where: { id: input.id },
+    });
+
+    return deletedEvent;
   };
 }
 

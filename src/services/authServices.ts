@@ -4,6 +4,7 @@ import { Gender, OtpType } from "../generated/prisma/enums.js";
 import { generaeOTP, getOtpExpireTime } from "../utils/otp.js";
 import { generateToken } from "../utils/jwt.js";
 import { error } from "node:console";
+import { registerSchema, loginSchema, verifyOtpSchema } from "../validations/authValidation.ts";
 
 const connectionString = process.env.DATABASE_URL;
 
@@ -21,6 +22,16 @@ class AuthServices {
     gender: Gender,
     age: number
   ) => {
+    // Validate input
+    const validation = registerSchema.safeParse({
+      firstName, lastName, emailId: email, mobileNo: mobileNumber,
+      countryCode, gender, age
+    });
+
+    if (!validation.success) {
+      throw new Error("Invalid input data");
+    }
+
     const user = await prisma.user.create({
       data: {
         firstName,
