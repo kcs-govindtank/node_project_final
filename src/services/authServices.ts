@@ -81,6 +81,8 @@ class AuthServices {
     });
 
     // TODO: send OTP via SMS provider
+    // Right now just logging to console
+    
     console.log("LOGIN OTP:", otp);
 
     return {

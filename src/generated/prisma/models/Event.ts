@@ -52,7 +52,7 @@ export type EventMinAggregateOutputType = {
   file: string | null
   location: string | null
   language: string | null
-  publishStates: $Enums.PublishStates | null
+  publishStatus: $Enums.PublishStatus | null
   publishDate: Date | null
   categoryId: number | null
   subcategoryId: number | null
@@ -72,7 +72,7 @@ export type EventMaxAggregateOutputType = {
   file: string | null
   location: string | null
   language: string | null
-  publishStates: $Enums.PublishStates | null
+  publishStatus: $Enums.PublishStatus | null
   publishDate: Date | null
   categoryId: number | null
   subcategoryId: number | null
@@ -92,7 +92,7 @@ export type EventCountAggregateOutputType = {
   file: number
   location: number
   language: number
-  publishStates: number
+  publishStatus: number
   publishDate: number
   categoryId: number
   subcategoryId: number
@@ -130,7 +130,7 @@ export type EventMinAggregateInputType = {
   file?: true
   location?: true
   language?: true
-  publishStates?: true
+  publishStatus?: true
   publishDate?: true
   categoryId?: true
   subcategoryId?: true
@@ -150,7 +150,7 @@ export type EventMaxAggregateInputType = {
   file?: true
   location?: true
   language?: true
-  publishStates?: true
+  publishStatus?: true
   publishDate?: true
   categoryId?: true
   subcategoryId?: true
@@ -170,7 +170,7 @@ export type EventCountAggregateInputType = {
   file?: true
   location?: true
   language?: true
-  publishStates?: true
+  publishStatus?: true
   publishDate?: true
   categoryId?: true
   subcategoryId?: true
@@ -277,7 +277,7 @@ export type EventGroupByOutputType = {
   file: string | null
   location: string | null
   language: string | null
-  publishStates: $Enums.PublishStates
+  publishStatus: $Enums.PublishStatus
   publishDate: Date
   categoryId: number | null
   subcategoryId: number | null
@@ -320,7 +320,7 @@ export type EventWhereInput = {
   file?: Prisma.StringNullableFilter<"Event"> | string | null
   location?: Prisma.StringNullableFilter<"Event"> | string | null
   language?: Prisma.StringNullableFilter<"Event"> | string | null
-  publishStates?: Prisma.EnumPublishStatesFilter<"Event"> | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusFilter<"Event"> | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeFilter<"Event"> | Date | string
   categoryId?: Prisma.IntNullableFilter<"Event"> | number | null
   subcategoryId?: Prisma.IntNullableFilter<"Event"> | number | null
@@ -344,7 +344,7 @@ export type EventOrderByWithRelationInput = {
   file?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   language?: Prisma.SortOrderInput | Prisma.SortOrder
-  publishStates?: Prisma.SortOrder
+  publishStatus?: Prisma.SortOrder
   publishDate?: Prisma.SortOrder
   categoryId?: Prisma.SortOrderInput | Prisma.SortOrder
   subcategoryId?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -371,7 +371,7 @@ export type EventWhereUniqueInput = Prisma.AtLeast<{
   file?: Prisma.StringNullableFilter<"Event"> | string | null
   location?: Prisma.StringNullableFilter<"Event"> | string | null
   language?: Prisma.StringNullableFilter<"Event"> | string | null
-  publishStates?: Prisma.EnumPublishStatesFilter<"Event"> | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusFilter<"Event"> | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeFilter<"Event"> | Date | string
   categoryId?: Prisma.IntNullableFilter<"Event"> | number | null
   subcategoryId?: Prisma.IntNullableFilter<"Event"> | number | null
@@ -395,7 +395,7 @@ export type EventOrderByWithAggregationInput = {
   file?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   language?: Prisma.SortOrderInput | Prisma.SortOrder
-  publishStates?: Prisma.SortOrder
+  publishStatus?: Prisma.SortOrder
   publishDate?: Prisma.SortOrder
   categoryId?: Prisma.SortOrderInput | Prisma.SortOrder
   subcategoryId?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -423,7 +423,7 @@ export type EventScalarWhereWithAggregatesInput = {
   file?: Prisma.StringNullableWithAggregatesFilter<"Event"> | string | null
   location?: Prisma.StringNullableWithAggregatesFilter<"Event"> | string | null
   language?: Prisma.StringNullableWithAggregatesFilter<"Event"> | string | null
-  publishStates?: Prisma.EnumPublishStatesWithAggregatesFilter<"Event"> | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusWithAggregatesFilter<"Event"> | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeWithAggregatesFilter<"Event"> | Date | string
   categoryId?: Prisma.IntNullableWithAggregatesFilter<"Event"> | number | null
   subcategoryId?: Prisma.IntNullableWithAggregatesFilter<"Event"> | number | null
@@ -442,7 +442,7 @@ export type EventCreateInput = {
   file?: string | null
   location?: string | null
   language?: string | null
-  publishStates?: $Enums.PublishStates
+  publishStatus?: $Enums.PublishStatus
   publishDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -462,7 +462,7 @@ export type EventUncheckedCreateInput = {
   file?: string | null
   location?: string | null
   language?: string | null
-  publishStates?: $Enums.PublishStates
+  publishStatus?: $Enums.PublishStatus
   publishDate: Date | string
   categoryId?: number | null
   subcategoryId?: number | null
@@ -481,7 +481,7 @@ export type EventUpdateInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStates?: Prisma.EnumPublishStatesFieldUpdateOperationsInput | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -501,7 +501,7 @@ export type EventUncheckedUpdateInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStates?: Prisma.EnumPublishStatesFieldUpdateOperationsInput | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   subcategoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -521,7 +521,7 @@ export type EventCreateManyInput = {
   file?: string | null
   location?: string | null
   language?: string | null
-  publishStates?: $Enums.PublishStates
+  publishStatus?: $Enums.PublishStatus
   publishDate: Date | string
   categoryId?: number | null
   subcategoryId?: number | null
@@ -540,7 +540,7 @@ export type EventUpdateManyMutationInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStates?: Prisma.EnumPublishStatesFieldUpdateOperationsInput | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -556,7 +556,7 @@ export type EventUncheckedUpdateManyInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStates?: Prisma.EnumPublishStatesFieldUpdateOperationsInput | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   subcategoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -586,7 +586,7 @@ export type EventCountOrderByAggregateInput = {
   file?: Prisma.SortOrder
   location?: Prisma.SortOrder
   language?: Prisma.SortOrder
-  publishStates?: Prisma.SortOrder
+  publishStatus?: Prisma.SortOrder
   publishDate?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
   subcategoryId?: Prisma.SortOrder
@@ -614,7 +614,7 @@ export type EventMaxOrderByAggregateInput = {
   file?: Prisma.SortOrder
   location?: Prisma.SortOrder
   language?: Prisma.SortOrder
-  publishStates?: Prisma.SortOrder
+  publishStatus?: Prisma.SortOrder
   publishDate?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
   subcategoryId?: Prisma.SortOrder
@@ -634,7 +634,7 @@ export type EventMinOrderByAggregateInput = {
   file?: Prisma.SortOrder
   location?: Prisma.SortOrder
   language?: Prisma.SortOrder
-  publishStates?: Prisma.SortOrder
+  publishStatus?: Prisma.SortOrder
   publishDate?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
   subcategoryId?: Prisma.SortOrder
@@ -824,8 +824,8 @@ export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
 
-export type EnumPublishStatesFieldUpdateOperationsInput = {
-  set?: $Enums.PublishStates
+export type EnumPublishStatusFieldUpdateOperationsInput = {
+  set?: $Enums.PublishStatus
 }
 
 export type EventCreateWithoutCountryInput = {
@@ -837,7 +837,7 @@ export type EventCreateWithoutCountryInput = {
   file?: string | null
   location?: string | null
   language?: string | null
-  publishStates?: $Enums.PublishStates
+  publishStatus?: $Enums.PublishStatus
   publishDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -856,7 +856,7 @@ export type EventUncheckedCreateWithoutCountryInput = {
   file?: string | null
   location?: string | null
   language?: string | null
-  publishStates?: $Enums.PublishStates
+  publishStatus?: $Enums.PublishStatus
   publishDate: Date | string
   categoryId?: number | null
   subcategoryId?: number | null
@@ -904,7 +904,7 @@ export type EventScalarWhereInput = {
   file?: Prisma.StringNullableFilter<"Event"> | string | null
   location?: Prisma.StringNullableFilter<"Event"> | string | null
   language?: Prisma.StringNullableFilter<"Event"> | string | null
-  publishStates?: Prisma.EnumPublishStatesFilter<"Event"> | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusFilter<"Event"> | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeFilter<"Event"> | Date | string
   categoryId?: Prisma.IntNullableFilter<"Event"> | number | null
   subcategoryId?: Prisma.IntNullableFilter<"Event"> | number | null
@@ -923,7 +923,7 @@ export type EventCreateWithoutStateInput = {
   file?: string | null
   location?: string | null
   language?: string | null
-  publishStates?: $Enums.PublishStates
+  publishStatus?: $Enums.PublishStatus
   publishDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -942,7 +942,7 @@ export type EventUncheckedCreateWithoutStateInput = {
   file?: string | null
   location?: string | null
   language?: string | null
-  publishStates?: $Enums.PublishStates
+  publishStatus?: $Enums.PublishStatus
   publishDate: Date | string
   categoryId?: number | null
   subcategoryId?: number | null
@@ -986,7 +986,7 @@ export type EventCreateWithoutCategoryInput = {
   file?: string | null
   location?: string | null
   language?: string | null
-  publishStates?: $Enums.PublishStates
+  publishStatus?: $Enums.PublishStatus
   publishDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1005,7 +1005,7 @@ export type EventUncheckedCreateWithoutCategoryInput = {
   file?: string | null
   location?: string | null
   language?: string | null
-  publishStates?: $Enums.PublishStates
+  publishStatus?: $Enums.PublishStatus
   publishDate: Date | string
   subcategoryId?: number | null
   stateId?: number | null
@@ -1049,7 +1049,7 @@ export type EventCreateWithoutSubcategoryInput = {
   file?: string | null
   location?: string | null
   language?: string | null
-  publishStates?: $Enums.PublishStates
+  publishStatus?: $Enums.PublishStatus
   publishDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1068,7 +1068,7 @@ export type EventUncheckedCreateWithoutSubcategoryInput = {
   file?: string | null
   location?: string | null
   language?: string | null
-  publishStates?: $Enums.PublishStates
+  publishStatus?: $Enums.PublishStatus
   publishDate: Date | string
   categoryId?: number | null
   stateId?: number | null
@@ -1113,7 +1113,7 @@ export type EventCreateManyCountryInput = {
   file?: string | null
   location?: string | null
   language?: string | null
-  publishStates?: $Enums.PublishStates
+  publishStatus?: $Enums.PublishStatus
   publishDate: Date | string
   categoryId?: number | null
   subcategoryId?: number | null
@@ -1131,7 +1131,7 @@ export type EventUpdateWithoutCountryInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStates?: Prisma.EnumPublishStatesFieldUpdateOperationsInput | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1150,7 +1150,7 @@ export type EventUncheckedUpdateWithoutCountryInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStates?: Prisma.EnumPublishStatesFieldUpdateOperationsInput | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   subcategoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1169,7 +1169,7 @@ export type EventUncheckedUpdateManyWithoutCountryInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStates?: Prisma.EnumPublishStatesFieldUpdateOperationsInput | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   subcategoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1188,7 +1188,7 @@ export type EventCreateManyStateInput = {
   file?: string | null
   location?: string | null
   language?: string | null
-  publishStates?: $Enums.PublishStates
+  publishStatus?: $Enums.PublishStatus
   publishDate: Date | string
   categoryId?: number | null
   subcategoryId?: number | null
@@ -1206,7 +1206,7 @@ export type EventUpdateWithoutStateInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStates?: Prisma.EnumPublishStatesFieldUpdateOperationsInput | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1225,7 +1225,7 @@ export type EventUncheckedUpdateWithoutStateInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStates?: Prisma.EnumPublishStatesFieldUpdateOperationsInput | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   subcategoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1244,7 +1244,7 @@ export type EventUncheckedUpdateManyWithoutStateInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStates?: Prisma.EnumPublishStatesFieldUpdateOperationsInput | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   subcategoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1263,7 +1263,7 @@ export type EventCreateManyCategoryInput = {
   file?: string | null
   location?: string | null
   language?: string | null
-  publishStates?: $Enums.PublishStates
+  publishStatus?: $Enums.PublishStatus
   publishDate: Date | string
   subcategoryId?: number | null
   stateId?: number | null
@@ -1281,7 +1281,7 @@ export type EventUpdateWithoutCategoryInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStates?: Prisma.EnumPublishStatesFieldUpdateOperationsInput | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1300,7 +1300,7 @@ export type EventUncheckedUpdateWithoutCategoryInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStates?: Prisma.EnumPublishStatesFieldUpdateOperationsInput | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   subcategoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   stateId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1319,7 +1319,7 @@ export type EventUncheckedUpdateManyWithoutCategoryInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStates?: Prisma.EnumPublishStatesFieldUpdateOperationsInput | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   subcategoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   stateId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1338,7 +1338,7 @@ export type EventCreateManySubcategoryInput = {
   file?: string | null
   location?: string | null
   language?: string | null
-  publishStates?: $Enums.PublishStates
+  publishStatus?: $Enums.PublishStatus
   publishDate: Date | string
   categoryId?: number | null
   stateId?: number | null
@@ -1356,7 +1356,7 @@ export type EventUpdateWithoutSubcategoryInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStates?: Prisma.EnumPublishStatesFieldUpdateOperationsInput | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1375,7 +1375,7 @@ export type EventUncheckedUpdateWithoutSubcategoryInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStates?: Prisma.EnumPublishStatesFieldUpdateOperationsInput | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   stateId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1394,7 +1394,7 @@ export type EventUncheckedUpdateManyWithoutSubcategoryInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStates?: Prisma.EnumPublishStatesFieldUpdateOperationsInput | $Enums.PublishStates
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   stateId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1415,7 +1415,7 @@ export type EventSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   file?: boolean
   location?: boolean
   language?: boolean
-  publishStates?: boolean
+  publishStatus?: boolean
   publishDate?: boolean
   categoryId?: boolean
   subcategoryId?: boolean
@@ -1439,7 +1439,7 @@ export type EventSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   file?: boolean
   location?: boolean
   language?: boolean
-  publishStates?: boolean
+  publishStatus?: boolean
   publishDate?: boolean
   categoryId?: boolean
   subcategoryId?: boolean
@@ -1463,7 +1463,7 @@ export type EventSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   file?: boolean
   location?: boolean
   language?: boolean
-  publishStates?: boolean
+  publishStatus?: boolean
   publishDate?: boolean
   categoryId?: boolean
   subcategoryId?: boolean
@@ -1487,7 +1487,7 @@ export type EventSelectScalar = {
   file?: boolean
   location?: boolean
   language?: boolean
-  publishStates?: boolean
+  publishStatus?: boolean
   publishDate?: boolean
   categoryId?: boolean
   subcategoryId?: boolean
@@ -1497,7 +1497,7 @@ export type EventSelectScalar = {
   updatedAt?: boolean
 }
 
-export type EventOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "content" | "date" | "mediaType" | "file" | "location" | "language" | "publishStates" | "publishDate" | "categoryId" | "subcategoryId" | "stateId" | "countryId" | "createdAt" | "updatedAt", ExtArgs["result"]["event"]>
+export type EventOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "content" | "date" | "mediaType" | "file" | "location" | "language" | "publishStatus" | "publishDate" | "categoryId" | "subcategoryId" | "stateId" | "countryId" | "createdAt" | "updatedAt", ExtArgs["result"]["event"]>
 export type EventInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   category?: boolean | Prisma.Event$categoryArgs<ExtArgs>
   subcategory?: boolean | Prisma.Event$subcategoryArgs<ExtArgs>
@@ -1535,7 +1535,7 @@ export type $EventPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     file: string | null
     location: string | null
     language: string | null
-    publishStates: $Enums.PublishStates
+    publishStatus: $Enums.PublishStatus
     publishDate: Date
     categoryId: number | null
     subcategoryId: number | null
@@ -1979,7 +1979,7 @@ export interface EventFieldRefs {
   readonly file: Prisma.FieldRef<"Event", 'String'>
   readonly location: Prisma.FieldRef<"Event", 'String'>
   readonly language: Prisma.FieldRef<"Event", 'String'>
-  readonly publishStates: Prisma.FieldRef<"Event", 'PublishStates'>
+  readonly publishStatus: Prisma.FieldRef<"Event", 'PublishStatus'>
   readonly publishDate: Prisma.FieldRef<"Event", 'DateTime'>
   readonly categoryId: Prisma.FieldRef<"Event", 'Int'>
   readonly subcategoryId: Prisma.FieldRef<"Event", 'Int'>

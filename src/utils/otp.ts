@@ -4,6 +4,6 @@ export const generaeOTP = (): string => {
 
 export const getOtpExpireTime = (): Date => {
   const now = new Date();
-  now.setMinutes(now.getMinutes() + 2); // OTP expires in 2 minutes
+  now.setMinutes(now.getMinutes() + parseInt(process.env.OTP_EXPIRY_TIME || "2")); // OTP expires in 2 minutes
   return now;
 };

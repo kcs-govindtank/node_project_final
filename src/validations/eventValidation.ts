@@ -30,6 +30,14 @@ export const deleteEventSchema = z.object({
   id: z.number().int().positive("Event ID must be a positive integer"),
 });
 
+// Schema for viewing all events
+export const viewAllEventsSchema = z.object({
+  search: z.string().optional(),
+  filter: z.string().optional(),
+  page: z.number().int().positive().default(1),
+  limit: z.number().int().positive().default(10),
+});
+
 // Utility function to parse and validate
 export const validateEvent = <T>(schema: z.ZodSchema<T>, data: unknown): T => {
   return schema.parse(data);

@@ -159,7 +159,7 @@ export const EventScalarFieldEnum = {
   file: 'file',
   location: 'location',
   language: 'language',
-  publishStates: 'publishStates',
+  publishStatus: 'publishStatus',
   publishDate: 'publishDate',
   categoryId: 'categoryId',
   subcategoryId: 'subcategoryId',

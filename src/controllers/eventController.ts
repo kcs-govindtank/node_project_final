@@ -27,6 +27,45 @@ const parseNumericFields = (req: Request) => {
 };
 
 export default {
+
+  viewAllEvents: async (req: Request, res: Response) => {
+    try {
+      const { search, page, limit } = req.query;
+      const events = await EventServices.viewAllEvents({
+        search: search as string,
+        page: page ? Number(page) : 1,
+        limit: limit ? Number(limit) : 10,
+      });
+      res.json({ success: true, data: events });
+    } catch (error) {
+      res.status(500).json({ success: false, message: String(error) });
+    }
+    //   const events = await EventServices.viewAllEvents(); // Call the service method
+    //   res.json({ success: true, data: events });
+    // } catch (error) {
+    //   res.status(500).json({ success: false, message: String(error) });
+    // } 
+  },
+
+  viewEventById: async (req: Request, res: Response) => {
+    try {
+      const idParam = req.params.id; 
+      if (!idParam) {
+        return res.status(400).json({ success: false, message: "Missing id parameter" });
+      } 
+
+      const id = Number(idParam);
+      if (Number.isNaN(id)) {
+        return res.status(400).json({ success: false, message: "Invalid id parameter" });
+      }
+
+      const event = await EventServices.viewEventById(id);
+      res.json({ success: true, data: event });
+    } catch (error) {
+      res.status(500).json({ success: false, message: String(error) });
+    }
+  },
+
   addEvent: async (req: Request, res: Response) => {
     try {
       const payload = parseNumericFields(req);

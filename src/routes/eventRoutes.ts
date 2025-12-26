@@ -5,7 +5,7 @@ import upload from "../middlewares/uploadFileMiddleware.js";
 
 const eventRouter = express.Router();
 
-
+// add event - protected route
 eventRouter.post(
   "/addevent",
   eventMiddlewar.authenticate,
@@ -13,6 +13,7 @@ eventRouter.post(
   EventController.addEvent
 );
 
+// edit event - protected route
 eventRouter.put(
   "/editevent",
   eventMiddlewar.authenticate,
@@ -20,11 +21,17 @@ eventRouter.put(
   EventController.editEvent
 );
 
-// delete via param for clarity
+// delete event - protected route
 eventRouter.delete(
   "/deleteevent/:id",
   eventMiddlewar.authenticate,
   EventController.deleteEvent
 );
+
+// view all events - public route (no auth)
+eventRouter.get("/", EventController.viewAllEvents);
+
+// view event by id - public route (no auth)
+eventRouter.get("/:id", EventController.viewEventById);
 
 export default eventRouter;

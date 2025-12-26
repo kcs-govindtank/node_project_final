@@ -27,10 +27,10 @@ export const OtpType = {
 export type OtpType = (typeof OtpType)[keyof typeof OtpType]
 
 
-export const PublishStates = {
+export const PublishStatus = {
   DRAFT: 'DRAFT',
   PUBLISHED: 'PUBLISHED',
   ARCHIVED: 'ARCHIVED'
 } as const
 
-export type PublishStates = (typeof PublishStates)[keyof typeof PublishStates]
+export type PublishStatus = (typeof PublishStatus)[keyof typeof PublishStatus]

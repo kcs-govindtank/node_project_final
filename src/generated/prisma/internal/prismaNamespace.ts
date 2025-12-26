@@ -1050,7 +1050,7 @@ export const EventScalarFieldEnum = {
   file: 'file',
   location: 'location',
   language: 'language',
-  publishStates: 'publishStates',
+  publishStatus: 'publishStatus',
   publishDate: 'publishDate',
   categoryId: 'categoryId',
   subcategoryId: 'subcategoryId',
@@ -1171,16 +1171,16 @@ export type ListEnumOtpTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$Pris
 
 
 /**
- * Reference to a field of type 'PublishStates'
+ * Reference to a field of type 'PublishStatus'
  */
-export type EnumPublishStatesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PublishStates'>
+export type EnumPublishStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PublishStatus'>
     
 
 
 /**
- * Reference to a field of type 'PublishStates[]'
+ * Reference to a field of type 'PublishStatus[]'
  */
-export type ListEnumPublishStatesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PublishStates[]'>
+export type ListEnumPublishStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PublishStatus[]'>
     
 
 

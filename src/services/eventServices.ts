@@ -1,5 +1,5 @@
 import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaClient, PublishStates } from "../generated/prisma/client.js";
+import { PrismaClient, PublishStatus } from "../generated/prisma/client.js";
 import { assertExist } from "../utils/assertExist.js";
 import { validateEvent, addEventSchema, editEventSchema, deleteEventSchema } from "../validations/eventValidation.js";
 
@@ -8,6 +8,63 @@ const adapter = new PrismaPg({ connectionString });
 const prisma = new PrismaClient({ adapter });
 
 class EventServices {
+
+  static viewAllEvents = async (payload: {
+    search?: string;
+    page: number;
+    limit: number;
+  }) => {
+    const { search, page, limit } = payload;
+
+    // Calculate the skip value for pagination
+    const skip = (page - 1) * limit;
+
+    //Define the where clause for search
+    const where: any = {};
+
+    //Add search condition if search term is provided
+    if (search) {
+      where.OR = [
+        { title: { contains: search, mode: "insensitive" } },
+        { description: { contains: search, mode: "insensitive" } },
+        { content: { contains: search, mode: "insensitive" } },
+      ];
+    }
+
+    const events= await prisma.event.findMany({
+      where,
+      skip,
+      take: limit,
+      orderBy: { createdAt: "desc" },
+      include: {
+        category: true,
+        subcategory: true,
+        country: true,
+        state: true,
+      },  
+    });
+
+    //Get the total count for pagination
+    const totalEvents = await prisma.event.count({ where });
+
+    return {
+      events, 
+      pagination: {
+        total: totalEvents,
+        page,
+        limit,
+        totalPages: Math.ceil(totalEvents / limit),
+      },
+    };
+  };
+  
+
+  static viewEventById = async (id: number) => {
+    const event = await prisma.event.findUnique({ where: { id } });
+    assertExist(event, "Event not found");
+    return event;
+  };
+
   static addEvent = async (payload: any) => {
     // ✅ Validate input using Zod
     const validatedData = validateEvent(addEventSchema, payload);
@@ -29,7 +86,7 @@ class EventServices {
       file: validatedData.file,
       location: validatedData.location,
       language: validatedData.language,
-      publishStates: validatedData.publishStatus === "publish" ? PublishStates.PUBLISHED : PublishStates.DRAFT,
+      publishStatus: validatedData.publishStatus === "publish" ? PublishStatus.PUBLISHED : PublishStatus.DRAFT,
       categoryId: validatedData.categoryId,
       subcategoryId: validatedData.subcategoryId,
       countryId: validatedData.countryId,
@@ -80,7 +137,7 @@ class EventServices {
       updateData.date = new Date(validatedData.publishedDate);
     }
     if (validatedData.publishStatus) {
-      updateData.publishStates = validatedData.publishStatus === "publish" ? PublishStates.PUBLISHED : PublishStates.DRAFT;
+      updateData.publishStatus = validatedData.publishStatus === "publish" ? PublishStatus.PUBLISHED : PublishStatus.DRAFT;
     }
 
     const updated = await prisma.event.update({
