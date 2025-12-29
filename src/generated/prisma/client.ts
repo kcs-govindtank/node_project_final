@@ -50,25 +50,25 @@ export type User = Prisma.UserModel
  */
 export type Otp = Prisma.OtpModel
 /**
- * Model country
+ * Model Category
  * 
  */
-export type country = Prisma.countryModel
+export type Category = Prisma.CategoryModel
 /**
- * Model state
+ * Model SubCategory
  * 
  */
-export type state = Prisma.stateModel
+export type SubCategory = Prisma.SubCategoryModel
 /**
- * Model category
+ * Model Country
  * 
  */
-export type category = Prisma.categoryModel
+export type Country = Prisma.CountryModel
 /**
- * Model subcategory
+ * Model State
  * 
  */
-export type subcategory = Prisma.subcategoryModel
+export type State = Prisma.StateModel
 /**
  * Model Event
  * 

@@ -328,10 +328,10 @@ export type EventWhereInput = {
   countryId?: Prisma.IntNullableFilter<"Event"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Event"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Event"> | Date | string
-  category?: Prisma.XOR<Prisma.CategoryNullableScalarRelationFilter, Prisma.categoryWhereInput> | null
-  subcategory?: Prisma.XOR<Prisma.SubcategoryNullableScalarRelationFilter, Prisma.subcategoryWhereInput> | null
-  country?: Prisma.XOR<Prisma.CountryNullableScalarRelationFilter, Prisma.countryWhereInput> | null
-  state?: Prisma.XOR<Prisma.StateNullableScalarRelationFilter, Prisma.stateWhereInput> | null
+  category?: Prisma.XOR<Prisma.CategoryNullableScalarRelationFilter, Prisma.CategoryWhereInput> | null
+  subcategory?: Prisma.XOR<Prisma.SubCategoryNullableScalarRelationFilter, Prisma.SubCategoryWhereInput> | null
+  country?: Prisma.XOR<Prisma.CountryNullableScalarRelationFilter, Prisma.CountryWhereInput> | null
+  state?: Prisma.XOR<Prisma.StateNullableScalarRelationFilter, Prisma.StateWhereInput> | null
 }
 
 export type EventOrderByWithRelationInput = {
@@ -352,10 +352,10 @@ export type EventOrderByWithRelationInput = {
   countryId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  category?: Prisma.categoryOrderByWithRelationInput
-  subcategory?: Prisma.subcategoryOrderByWithRelationInput
-  country?: Prisma.countryOrderByWithRelationInput
-  state?: Prisma.stateOrderByWithRelationInput
+  category?: Prisma.CategoryOrderByWithRelationInput
+  subcategory?: Prisma.SubCategoryOrderByWithRelationInput
+  country?: Prisma.CountryOrderByWithRelationInput
+  state?: Prisma.StateOrderByWithRelationInput
 }
 
 export type EventWhereUniqueInput = Prisma.AtLeast<{
@@ -379,10 +379,10 @@ export type EventWhereUniqueInput = Prisma.AtLeast<{
   countryId?: Prisma.IntNullableFilter<"Event"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Event"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Event"> | Date | string
-  category?: Prisma.XOR<Prisma.CategoryNullableScalarRelationFilter, Prisma.categoryWhereInput> | null
-  subcategory?: Prisma.XOR<Prisma.SubcategoryNullableScalarRelationFilter, Prisma.subcategoryWhereInput> | null
-  country?: Prisma.XOR<Prisma.CountryNullableScalarRelationFilter, Prisma.countryWhereInput> | null
-  state?: Prisma.XOR<Prisma.StateNullableScalarRelationFilter, Prisma.stateWhereInput> | null
+  category?: Prisma.XOR<Prisma.CategoryNullableScalarRelationFilter, Prisma.CategoryWhereInput> | null
+  subcategory?: Prisma.XOR<Prisma.SubCategoryNullableScalarRelationFilter, Prisma.SubCategoryWhereInput> | null
+  country?: Prisma.XOR<Prisma.CountryNullableScalarRelationFilter, Prisma.CountryWhereInput> | null
+  state?: Prisma.XOR<Prisma.StateNullableScalarRelationFilter, Prisma.StateWhereInput> | null
 }, "id">
 
 export type EventOrderByWithAggregationInput = {
@@ -446,10 +446,10 @@ export type EventCreateInput = {
   publishDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
-  category?: Prisma.categoryCreateNestedOneWithoutEventsInput
-  subcategory?: Prisma.subcategoryCreateNestedOneWithoutEventsInput
-  country?: Prisma.countryCreateNestedOneWithoutEventsInput
-  state?: Prisma.stateCreateNestedOneWithoutEventsInput
+  category?: Prisma.CategoryCreateNestedOneWithoutEventsInput
+  subcategory?: Prisma.SubCategoryCreateNestedOneWithoutEventsInput
+  country?: Prisma.CountryCreateNestedOneWithoutEventsInput
+  state?: Prisma.StateCreateNestedOneWithoutEventsInput
 }
 
 export type EventUncheckedCreateInput = {
@@ -485,10 +485,10 @@ export type EventUpdateInput = {
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  category?: Prisma.categoryUpdateOneWithoutEventsNestedInput
-  subcategory?: Prisma.subcategoryUpdateOneWithoutEventsNestedInput
-  country?: Prisma.countryUpdateOneWithoutEventsNestedInput
-  state?: Prisma.stateUpdateOneWithoutEventsNestedInput
+  category?: Prisma.CategoryUpdateOneWithoutEventsNestedInput
+  subcategory?: Prisma.SubCategoryUpdateOneWithoutEventsNestedInput
+  country?: Prisma.CountryUpdateOneWithoutEventsNestedInput
+  state?: Prisma.StateUpdateOneWithoutEventsNestedInput
 }
 
 export type EventUncheckedUpdateInput = {
@@ -652,90 +652,6 @@ export type EventSumOrderByAggregateInput = {
   countryId?: Prisma.SortOrder
 }
 
-export type EventCreateNestedManyWithoutCountryInput = {
-  create?: Prisma.XOR<Prisma.EventCreateWithoutCountryInput, Prisma.EventUncheckedCreateWithoutCountryInput> | Prisma.EventCreateWithoutCountryInput[] | Prisma.EventUncheckedCreateWithoutCountryInput[]
-  connectOrCreate?: Prisma.EventCreateOrConnectWithoutCountryInput | Prisma.EventCreateOrConnectWithoutCountryInput[]
-  createMany?: Prisma.EventCreateManyCountryInputEnvelope
-  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-}
-
-export type EventUncheckedCreateNestedManyWithoutCountryInput = {
-  create?: Prisma.XOR<Prisma.EventCreateWithoutCountryInput, Prisma.EventUncheckedCreateWithoutCountryInput> | Prisma.EventCreateWithoutCountryInput[] | Prisma.EventUncheckedCreateWithoutCountryInput[]
-  connectOrCreate?: Prisma.EventCreateOrConnectWithoutCountryInput | Prisma.EventCreateOrConnectWithoutCountryInput[]
-  createMany?: Prisma.EventCreateManyCountryInputEnvelope
-  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-}
-
-export type EventUpdateManyWithoutCountryNestedInput = {
-  create?: Prisma.XOR<Prisma.EventCreateWithoutCountryInput, Prisma.EventUncheckedCreateWithoutCountryInput> | Prisma.EventCreateWithoutCountryInput[] | Prisma.EventUncheckedCreateWithoutCountryInput[]
-  connectOrCreate?: Prisma.EventCreateOrConnectWithoutCountryInput | Prisma.EventCreateOrConnectWithoutCountryInput[]
-  upsert?: Prisma.EventUpsertWithWhereUniqueWithoutCountryInput | Prisma.EventUpsertWithWhereUniqueWithoutCountryInput[]
-  createMany?: Prisma.EventCreateManyCountryInputEnvelope
-  set?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-  disconnect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-  delete?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-  update?: Prisma.EventUpdateWithWhereUniqueWithoutCountryInput | Prisma.EventUpdateWithWhereUniqueWithoutCountryInput[]
-  updateMany?: Prisma.EventUpdateManyWithWhereWithoutCountryInput | Prisma.EventUpdateManyWithWhereWithoutCountryInput[]
-  deleteMany?: Prisma.EventScalarWhereInput | Prisma.EventScalarWhereInput[]
-}
-
-export type EventUncheckedUpdateManyWithoutCountryNestedInput = {
-  create?: Prisma.XOR<Prisma.EventCreateWithoutCountryInput, Prisma.EventUncheckedCreateWithoutCountryInput> | Prisma.EventCreateWithoutCountryInput[] | Prisma.EventUncheckedCreateWithoutCountryInput[]
-  connectOrCreate?: Prisma.EventCreateOrConnectWithoutCountryInput | Prisma.EventCreateOrConnectWithoutCountryInput[]
-  upsert?: Prisma.EventUpsertWithWhereUniqueWithoutCountryInput | Prisma.EventUpsertWithWhereUniqueWithoutCountryInput[]
-  createMany?: Prisma.EventCreateManyCountryInputEnvelope
-  set?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-  disconnect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-  delete?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-  update?: Prisma.EventUpdateWithWhereUniqueWithoutCountryInput | Prisma.EventUpdateWithWhereUniqueWithoutCountryInput[]
-  updateMany?: Prisma.EventUpdateManyWithWhereWithoutCountryInput | Prisma.EventUpdateManyWithWhereWithoutCountryInput[]
-  deleteMany?: Prisma.EventScalarWhereInput | Prisma.EventScalarWhereInput[]
-}
-
-export type EventCreateNestedManyWithoutStateInput = {
-  create?: Prisma.XOR<Prisma.EventCreateWithoutStateInput, Prisma.EventUncheckedCreateWithoutStateInput> | Prisma.EventCreateWithoutStateInput[] | Prisma.EventUncheckedCreateWithoutStateInput[]
-  connectOrCreate?: Prisma.EventCreateOrConnectWithoutStateInput | Prisma.EventCreateOrConnectWithoutStateInput[]
-  createMany?: Prisma.EventCreateManyStateInputEnvelope
-  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-}
-
-export type EventUncheckedCreateNestedManyWithoutStateInput = {
-  create?: Prisma.XOR<Prisma.EventCreateWithoutStateInput, Prisma.EventUncheckedCreateWithoutStateInput> | Prisma.EventCreateWithoutStateInput[] | Prisma.EventUncheckedCreateWithoutStateInput[]
-  connectOrCreate?: Prisma.EventCreateOrConnectWithoutStateInput | Prisma.EventCreateOrConnectWithoutStateInput[]
-  createMany?: Prisma.EventCreateManyStateInputEnvelope
-  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-}
-
-export type EventUpdateManyWithoutStateNestedInput = {
-  create?: Prisma.XOR<Prisma.EventCreateWithoutStateInput, Prisma.EventUncheckedCreateWithoutStateInput> | Prisma.EventCreateWithoutStateInput[] | Prisma.EventUncheckedCreateWithoutStateInput[]
-  connectOrCreate?: Prisma.EventCreateOrConnectWithoutStateInput | Prisma.EventCreateOrConnectWithoutStateInput[]
-  upsert?: Prisma.EventUpsertWithWhereUniqueWithoutStateInput | Prisma.EventUpsertWithWhereUniqueWithoutStateInput[]
-  createMany?: Prisma.EventCreateManyStateInputEnvelope
-  set?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-  disconnect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-  delete?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-  update?: Prisma.EventUpdateWithWhereUniqueWithoutStateInput | Prisma.EventUpdateWithWhereUniqueWithoutStateInput[]
-  updateMany?: Prisma.EventUpdateManyWithWhereWithoutStateInput | Prisma.EventUpdateManyWithWhereWithoutStateInput[]
-  deleteMany?: Prisma.EventScalarWhereInput | Prisma.EventScalarWhereInput[]
-}
-
-export type EventUncheckedUpdateManyWithoutStateNestedInput = {
-  create?: Prisma.XOR<Prisma.EventCreateWithoutStateInput, Prisma.EventUncheckedCreateWithoutStateInput> | Prisma.EventCreateWithoutStateInput[] | Prisma.EventUncheckedCreateWithoutStateInput[]
-  connectOrCreate?: Prisma.EventCreateOrConnectWithoutStateInput | Prisma.EventCreateOrConnectWithoutStateInput[]
-  upsert?: Prisma.EventUpsertWithWhereUniqueWithoutStateInput | Prisma.EventUpsertWithWhereUniqueWithoutStateInput[]
-  createMany?: Prisma.EventCreateManyStateInputEnvelope
-  set?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-  disconnect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-  delete?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
-  update?: Prisma.EventUpdateWithWhereUniqueWithoutStateInput | Prisma.EventUpdateWithWhereUniqueWithoutStateInput[]
-  updateMany?: Prisma.EventUpdateManyWithWhereWithoutStateInput | Prisma.EventUpdateManyWithWhereWithoutStateInput[]
-  deleteMany?: Prisma.EventScalarWhereInput | Prisma.EventScalarWhereInput[]
-}
-
 export type EventCreateNestedManyWithoutCategoryInput = {
   create?: Prisma.XOR<Prisma.EventCreateWithoutCategoryInput, Prisma.EventUncheckedCreateWithoutCategoryInput> | Prisma.EventCreateWithoutCategoryInput[] | Prisma.EventUncheckedCreateWithoutCategoryInput[]
   connectOrCreate?: Prisma.EventCreateOrConnectWithoutCategoryInput | Prisma.EventCreateOrConnectWithoutCategoryInput[]
@@ -820,161 +736,96 @@ export type EventUncheckedUpdateManyWithoutSubcategoryNestedInput = {
   deleteMany?: Prisma.EventScalarWhereInput | Prisma.EventScalarWhereInput[]
 }
 
+export type EventCreateNestedManyWithoutCountryInput = {
+  create?: Prisma.XOR<Prisma.EventCreateWithoutCountryInput, Prisma.EventUncheckedCreateWithoutCountryInput> | Prisma.EventCreateWithoutCountryInput[] | Prisma.EventUncheckedCreateWithoutCountryInput[]
+  connectOrCreate?: Prisma.EventCreateOrConnectWithoutCountryInput | Prisma.EventCreateOrConnectWithoutCountryInput[]
+  createMany?: Prisma.EventCreateManyCountryInputEnvelope
+  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+}
+
+export type EventUncheckedCreateNestedManyWithoutCountryInput = {
+  create?: Prisma.XOR<Prisma.EventCreateWithoutCountryInput, Prisma.EventUncheckedCreateWithoutCountryInput> | Prisma.EventCreateWithoutCountryInput[] | Prisma.EventUncheckedCreateWithoutCountryInput[]
+  connectOrCreate?: Prisma.EventCreateOrConnectWithoutCountryInput | Prisma.EventCreateOrConnectWithoutCountryInput[]
+  createMany?: Prisma.EventCreateManyCountryInputEnvelope
+  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+}
+
+export type EventUpdateManyWithoutCountryNestedInput = {
+  create?: Prisma.XOR<Prisma.EventCreateWithoutCountryInput, Prisma.EventUncheckedCreateWithoutCountryInput> | Prisma.EventCreateWithoutCountryInput[] | Prisma.EventUncheckedCreateWithoutCountryInput[]
+  connectOrCreate?: Prisma.EventCreateOrConnectWithoutCountryInput | Prisma.EventCreateOrConnectWithoutCountryInput[]
+  upsert?: Prisma.EventUpsertWithWhereUniqueWithoutCountryInput | Prisma.EventUpsertWithWhereUniqueWithoutCountryInput[]
+  createMany?: Prisma.EventCreateManyCountryInputEnvelope
+  set?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  disconnect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  delete?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  update?: Prisma.EventUpdateWithWhereUniqueWithoutCountryInput | Prisma.EventUpdateWithWhereUniqueWithoutCountryInput[]
+  updateMany?: Prisma.EventUpdateManyWithWhereWithoutCountryInput | Prisma.EventUpdateManyWithWhereWithoutCountryInput[]
+  deleteMany?: Prisma.EventScalarWhereInput | Prisma.EventScalarWhereInput[]
+}
+
+export type EventUncheckedUpdateManyWithoutCountryNestedInput = {
+  create?: Prisma.XOR<Prisma.EventCreateWithoutCountryInput, Prisma.EventUncheckedCreateWithoutCountryInput> | Prisma.EventCreateWithoutCountryInput[] | Prisma.EventUncheckedCreateWithoutCountryInput[]
+  connectOrCreate?: Prisma.EventCreateOrConnectWithoutCountryInput | Prisma.EventCreateOrConnectWithoutCountryInput[]
+  upsert?: Prisma.EventUpsertWithWhereUniqueWithoutCountryInput | Prisma.EventUpsertWithWhereUniqueWithoutCountryInput[]
+  createMany?: Prisma.EventCreateManyCountryInputEnvelope
+  set?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  disconnect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  delete?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  update?: Prisma.EventUpdateWithWhereUniqueWithoutCountryInput | Prisma.EventUpdateWithWhereUniqueWithoutCountryInput[]
+  updateMany?: Prisma.EventUpdateManyWithWhereWithoutCountryInput | Prisma.EventUpdateManyWithWhereWithoutCountryInput[]
+  deleteMany?: Prisma.EventScalarWhereInput | Prisma.EventScalarWhereInput[]
+}
+
+export type EventCreateNestedManyWithoutStateInput = {
+  create?: Prisma.XOR<Prisma.EventCreateWithoutStateInput, Prisma.EventUncheckedCreateWithoutStateInput> | Prisma.EventCreateWithoutStateInput[] | Prisma.EventUncheckedCreateWithoutStateInput[]
+  connectOrCreate?: Prisma.EventCreateOrConnectWithoutStateInput | Prisma.EventCreateOrConnectWithoutStateInput[]
+  createMany?: Prisma.EventCreateManyStateInputEnvelope
+  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+}
+
+export type EventUncheckedCreateNestedManyWithoutStateInput = {
+  create?: Prisma.XOR<Prisma.EventCreateWithoutStateInput, Prisma.EventUncheckedCreateWithoutStateInput> | Prisma.EventCreateWithoutStateInput[] | Prisma.EventUncheckedCreateWithoutStateInput[]
+  connectOrCreate?: Prisma.EventCreateOrConnectWithoutStateInput | Prisma.EventCreateOrConnectWithoutStateInput[]
+  createMany?: Prisma.EventCreateManyStateInputEnvelope
+  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+}
+
+export type EventUpdateManyWithoutStateNestedInput = {
+  create?: Prisma.XOR<Prisma.EventCreateWithoutStateInput, Prisma.EventUncheckedCreateWithoutStateInput> | Prisma.EventCreateWithoutStateInput[] | Prisma.EventUncheckedCreateWithoutStateInput[]
+  connectOrCreate?: Prisma.EventCreateOrConnectWithoutStateInput | Prisma.EventCreateOrConnectWithoutStateInput[]
+  upsert?: Prisma.EventUpsertWithWhereUniqueWithoutStateInput | Prisma.EventUpsertWithWhereUniqueWithoutStateInput[]
+  createMany?: Prisma.EventCreateManyStateInputEnvelope
+  set?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  disconnect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  delete?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  update?: Prisma.EventUpdateWithWhereUniqueWithoutStateInput | Prisma.EventUpdateWithWhereUniqueWithoutStateInput[]
+  updateMany?: Prisma.EventUpdateManyWithWhereWithoutStateInput | Prisma.EventUpdateManyWithWhereWithoutStateInput[]
+  deleteMany?: Prisma.EventScalarWhereInput | Prisma.EventScalarWhereInput[]
+}
+
+export type EventUncheckedUpdateManyWithoutStateNestedInput = {
+  create?: Prisma.XOR<Prisma.EventCreateWithoutStateInput, Prisma.EventUncheckedCreateWithoutStateInput> | Prisma.EventCreateWithoutStateInput[] | Prisma.EventUncheckedCreateWithoutStateInput[]
+  connectOrCreate?: Prisma.EventCreateOrConnectWithoutStateInput | Prisma.EventCreateOrConnectWithoutStateInput[]
+  upsert?: Prisma.EventUpsertWithWhereUniqueWithoutStateInput | Prisma.EventUpsertWithWhereUniqueWithoutStateInput[]
+  createMany?: Prisma.EventCreateManyStateInputEnvelope
+  set?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  disconnect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  delete?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  update?: Prisma.EventUpdateWithWhereUniqueWithoutStateInput | Prisma.EventUpdateWithWhereUniqueWithoutStateInput[]
+  updateMany?: Prisma.EventUpdateManyWithWhereWithoutStateInput | Prisma.EventUpdateManyWithWhereWithoutStateInput[]
+  deleteMany?: Prisma.EventScalarWhereInput | Prisma.EventScalarWhereInput[]
+}
+
 export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
 
 export type EnumPublishStatusFieldUpdateOperationsInput = {
   set?: $Enums.PublishStatus
-}
-
-export type EventCreateWithoutCountryInput = {
-  title: string
-  description?: string | null
-  content?: string | null
-  date: Date | string
-  mediaType?: string | null
-  file?: string | null
-  location?: string | null
-  language?: string | null
-  publishStatus?: $Enums.PublishStatus
-  publishDate: Date | string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  category?: Prisma.categoryCreateNestedOneWithoutEventsInput
-  subcategory?: Prisma.subcategoryCreateNestedOneWithoutEventsInput
-  state?: Prisma.stateCreateNestedOneWithoutEventsInput
-}
-
-export type EventUncheckedCreateWithoutCountryInput = {
-  id?: number
-  title: string
-  description?: string | null
-  content?: string | null
-  date: Date | string
-  mediaType?: string | null
-  file?: string | null
-  location?: string | null
-  language?: string | null
-  publishStatus?: $Enums.PublishStatus
-  publishDate: Date | string
-  categoryId?: number | null
-  subcategoryId?: number | null
-  stateId?: number | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-}
-
-export type EventCreateOrConnectWithoutCountryInput = {
-  where: Prisma.EventWhereUniqueInput
-  create: Prisma.XOR<Prisma.EventCreateWithoutCountryInput, Prisma.EventUncheckedCreateWithoutCountryInput>
-}
-
-export type EventCreateManyCountryInputEnvelope = {
-  data: Prisma.EventCreateManyCountryInput | Prisma.EventCreateManyCountryInput[]
-  skipDuplicates?: boolean
-}
-
-export type EventUpsertWithWhereUniqueWithoutCountryInput = {
-  where: Prisma.EventWhereUniqueInput
-  update: Prisma.XOR<Prisma.EventUpdateWithoutCountryInput, Prisma.EventUncheckedUpdateWithoutCountryInput>
-  create: Prisma.XOR<Prisma.EventCreateWithoutCountryInput, Prisma.EventUncheckedCreateWithoutCountryInput>
-}
-
-export type EventUpdateWithWhereUniqueWithoutCountryInput = {
-  where: Prisma.EventWhereUniqueInput
-  data: Prisma.XOR<Prisma.EventUpdateWithoutCountryInput, Prisma.EventUncheckedUpdateWithoutCountryInput>
-}
-
-export type EventUpdateManyWithWhereWithoutCountryInput = {
-  where: Prisma.EventScalarWhereInput
-  data: Prisma.XOR<Prisma.EventUpdateManyMutationInput, Prisma.EventUncheckedUpdateManyWithoutCountryInput>
-}
-
-export type EventScalarWhereInput = {
-  AND?: Prisma.EventScalarWhereInput | Prisma.EventScalarWhereInput[]
-  OR?: Prisma.EventScalarWhereInput[]
-  NOT?: Prisma.EventScalarWhereInput | Prisma.EventScalarWhereInput[]
-  id?: Prisma.IntFilter<"Event"> | number
-  title?: Prisma.StringFilter<"Event"> | string
-  description?: Prisma.StringNullableFilter<"Event"> | string | null
-  content?: Prisma.StringNullableFilter<"Event"> | string | null
-  date?: Prisma.DateTimeFilter<"Event"> | Date | string
-  mediaType?: Prisma.StringNullableFilter<"Event"> | string | null
-  file?: Prisma.StringNullableFilter<"Event"> | string | null
-  location?: Prisma.StringNullableFilter<"Event"> | string | null
-  language?: Prisma.StringNullableFilter<"Event"> | string | null
-  publishStatus?: Prisma.EnumPublishStatusFilter<"Event"> | $Enums.PublishStatus
-  publishDate?: Prisma.DateTimeFilter<"Event"> | Date | string
-  categoryId?: Prisma.IntNullableFilter<"Event"> | number | null
-  subcategoryId?: Prisma.IntNullableFilter<"Event"> | number | null
-  stateId?: Prisma.IntNullableFilter<"Event"> | number | null
-  countryId?: Prisma.IntNullableFilter<"Event"> | number | null
-  createdAt?: Prisma.DateTimeFilter<"Event"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Event"> | Date | string
-}
-
-export type EventCreateWithoutStateInput = {
-  title: string
-  description?: string | null
-  content?: string | null
-  date: Date | string
-  mediaType?: string | null
-  file?: string | null
-  location?: string | null
-  language?: string | null
-  publishStatus?: $Enums.PublishStatus
-  publishDate: Date | string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  category?: Prisma.categoryCreateNestedOneWithoutEventsInput
-  subcategory?: Prisma.subcategoryCreateNestedOneWithoutEventsInput
-  country?: Prisma.countryCreateNestedOneWithoutEventsInput
-}
-
-export type EventUncheckedCreateWithoutStateInput = {
-  id?: number
-  title: string
-  description?: string | null
-  content?: string | null
-  date: Date | string
-  mediaType?: string | null
-  file?: string | null
-  location?: string | null
-  language?: string | null
-  publishStatus?: $Enums.PublishStatus
-  publishDate: Date | string
-  categoryId?: number | null
-  subcategoryId?: number | null
-  countryId?: number | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-}
-
-export type EventCreateOrConnectWithoutStateInput = {
-  where: Prisma.EventWhereUniqueInput
-  create: Prisma.XOR<Prisma.EventCreateWithoutStateInput, Prisma.EventUncheckedCreateWithoutStateInput>
-}
-
-export type EventCreateManyStateInputEnvelope = {
-  data: Prisma.EventCreateManyStateInput | Prisma.EventCreateManyStateInput[]
-  skipDuplicates?: boolean
-}
-
-export type EventUpsertWithWhereUniqueWithoutStateInput = {
-  where: Prisma.EventWhereUniqueInput
-  update: Prisma.XOR<Prisma.EventUpdateWithoutStateInput, Prisma.EventUncheckedUpdateWithoutStateInput>
-  create: Prisma.XOR<Prisma.EventCreateWithoutStateInput, Prisma.EventUncheckedCreateWithoutStateInput>
-}
-
-export type EventUpdateWithWhereUniqueWithoutStateInput = {
-  where: Prisma.EventWhereUniqueInput
-  data: Prisma.XOR<Prisma.EventUpdateWithoutStateInput, Prisma.EventUncheckedUpdateWithoutStateInput>
-}
-
-export type EventUpdateManyWithWhereWithoutStateInput = {
-  where: Prisma.EventScalarWhereInput
-  data: Prisma.XOR<Prisma.EventUpdateManyMutationInput, Prisma.EventUncheckedUpdateManyWithoutStateInput>
 }
 
 export type EventCreateWithoutCategoryInput = {
@@ -990,9 +841,9 @@ export type EventCreateWithoutCategoryInput = {
   publishDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
-  subcategory?: Prisma.subcategoryCreateNestedOneWithoutEventsInput
-  country?: Prisma.countryCreateNestedOneWithoutEventsInput
-  state?: Prisma.stateCreateNestedOneWithoutEventsInput
+  subcategory?: Prisma.SubCategoryCreateNestedOneWithoutEventsInput
+  country?: Prisma.CountryCreateNestedOneWithoutEventsInput
+  state?: Prisma.StateCreateNestedOneWithoutEventsInput
 }
 
 export type EventUncheckedCreateWithoutCategoryInput = {
@@ -1040,6 +891,29 @@ export type EventUpdateManyWithWhereWithoutCategoryInput = {
   data: Prisma.XOR<Prisma.EventUpdateManyMutationInput, Prisma.EventUncheckedUpdateManyWithoutCategoryInput>
 }
 
+export type EventScalarWhereInput = {
+  AND?: Prisma.EventScalarWhereInput | Prisma.EventScalarWhereInput[]
+  OR?: Prisma.EventScalarWhereInput[]
+  NOT?: Prisma.EventScalarWhereInput | Prisma.EventScalarWhereInput[]
+  id?: Prisma.IntFilter<"Event"> | number
+  title?: Prisma.StringFilter<"Event"> | string
+  description?: Prisma.StringNullableFilter<"Event"> | string | null
+  content?: Prisma.StringNullableFilter<"Event"> | string | null
+  date?: Prisma.DateTimeFilter<"Event"> | Date | string
+  mediaType?: Prisma.StringNullableFilter<"Event"> | string | null
+  file?: Prisma.StringNullableFilter<"Event"> | string | null
+  location?: Prisma.StringNullableFilter<"Event"> | string | null
+  language?: Prisma.StringNullableFilter<"Event"> | string | null
+  publishStatus?: Prisma.EnumPublishStatusFilter<"Event"> | $Enums.PublishStatus
+  publishDate?: Prisma.DateTimeFilter<"Event"> | Date | string
+  categoryId?: Prisma.IntNullableFilter<"Event"> | number | null
+  subcategoryId?: Prisma.IntNullableFilter<"Event"> | number | null
+  stateId?: Prisma.IntNullableFilter<"Event"> | number | null
+  countryId?: Prisma.IntNullableFilter<"Event"> | number | null
+  createdAt?: Prisma.DateTimeFilter<"Event"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Event"> | Date | string
+}
+
 export type EventCreateWithoutSubcategoryInput = {
   title: string
   description?: string | null
@@ -1053,9 +927,9 @@ export type EventCreateWithoutSubcategoryInput = {
   publishDate: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
-  category?: Prisma.categoryCreateNestedOneWithoutEventsInput
-  country?: Prisma.countryCreateNestedOneWithoutEventsInput
-  state?: Prisma.stateCreateNestedOneWithoutEventsInput
+  category?: Prisma.CategoryCreateNestedOneWithoutEventsInput
+  country?: Prisma.CountryCreateNestedOneWithoutEventsInput
+  state?: Prisma.StateCreateNestedOneWithoutEventsInput
 }
 
 export type EventUncheckedCreateWithoutSubcategoryInput = {
@@ -1103,7 +977,25 @@ export type EventUpdateManyWithWhereWithoutSubcategoryInput = {
   data: Prisma.XOR<Prisma.EventUpdateManyMutationInput, Prisma.EventUncheckedUpdateManyWithoutSubcategoryInput>
 }
 
-export type EventCreateManyCountryInput = {
+export type EventCreateWithoutCountryInput = {
+  title: string
+  description?: string | null
+  content?: string | null
+  date: Date | string
+  mediaType?: string | null
+  file?: string | null
+  location?: string | null
+  language?: string | null
+  publishStatus?: $Enums.PublishStatus
+  publishDate: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  category?: Prisma.CategoryCreateNestedOneWithoutEventsInput
+  subcategory?: Prisma.SubCategoryCreateNestedOneWithoutEventsInput
+  state?: Prisma.StateCreateNestedOneWithoutEventsInput
+}
+
+export type EventUncheckedCreateWithoutCountryInput = {
   id?: number
   title: string
   description?: string | null
@@ -1122,63 +1014,51 @@ export type EventCreateManyCountryInput = {
   updatedAt?: Date | string
 }
 
-export type EventUpdateWithoutCountryInput = {
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  mediaType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
-  publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  category?: Prisma.categoryUpdateOneWithoutEventsNestedInput
-  subcategory?: Prisma.subcategoryUpdateOneWithoutEventsNestedInput
-  state?: Prisma.stateUpdateOneWithoutEventsNestedInput
+export type EventCreateOrConnectWithoutCountryInput = {
+  where: Prisma.EventWhereUniqueInput
+  create: Prisma.XOR<Prisma.EventCreateWithoutCountryInput, Prisma.EventUncheckedCreateWithoutCountryInput>
 }
 
-export type EventUncheckedUpdateWithoutCountryInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  mediaType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
-  publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  subcategoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  stateId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+export type EventCreateManyCountryInputEnvelope = {
+  data: Prisma.EventCreateManyCountryInput | Prisma.EventCreateManyCountryInput[]
+  skipDuplicates?: boolean
 }
 
-export type EventUncheckedUpdateManyWithoutCountryInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  mediaType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
-  publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  subcategoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  stateId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+export type EventUpsertWithWhereUniqueWithoutCountryInput = {
+  where: Prisma.EventWhereUniqueInput
+  update: Prisma.XOR<Prisma.EventUpdateWithoutCountryInput, Prisma.EventUncheckedUpdateWithoutCountryInput>
+  create: Prisma.XOR<Prisma.EventCreateWithoutCountryInput, Prisma.EventUncheckedCreateWithoutCountryInput>
 }
 
-export type EventCreateManyStateInput = {
+export type EventUpdateWithWhereUniqueWithoutCountryInput = {
+  where: Prisma.EventWhereUniqueInput
+  data: Prisma.XOR<Prisma.EventUpdateWithoutCountryInput, Prisma.EventUncheckedUpdateWithoutCountryInput>
+}
+
+export type EventUpdateManyWithWhereWithoutCountryInput = {
+  where: Prisma.EventScalarWhereInput
+  data: Prisma.XOR<Prisma.EventUpdateManyMutationInput, Prisma.EventUncheckedUpdateManyWithoutCountryInput>
+}
+
+export type EventCreateWithoutStateInput = {
+  title: string
+  description?: string | null
+  content?: string | null
+  date: Date | string
+  mediaType?: string | null
+  file?: string | null
+  location?: string | null
+  language?: string | null
+  publishStatus?: $Enums.PublishStatus
+  publishDate: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  category?: Prisma.CategoryCreateNestedOneWithoutEventsInput
+  subcategory?: Prisma.SubCategoryCreateNestedOneWithoutEventsInput
+  country?: Prisma.CountryCreateNestedOneWithoutEventsInput
+}
+
+export type EventUncheckedCreateWithoutStateInput = {
   id?: number
   title: string
   description?: string | null
@@ -1197,60 +1077,30 @@ export type EventCreateManyStateInput = {
   updatedAt?: Date | string
 }
 
-export type EventUpdateWithoutStateInput = {
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  mediaType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
-  publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  category?: Prisma.categoryUpdateOneWithoutEventsNestedInput
-  subcategory?: Prisma.subcategoryUpdateOneWithoutEventsNestedInput
-  country?: Prisma.countryUpdateOneWithoutEventsNestedInput
+export type EventCreateOrConnectWithoutStateInput = {
+  where: Prisma.EventWhereUniqueInput
+  create: Prisma.XOR<Prisma.EventCreateWithoutStateInput, Prisma.EventUncheckedCreateWithoutStateInput>
 }
 
-export type EventUncheckedUpdateWithoutStateInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  mediaType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
-  publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  subcategoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  countryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+export type EventCreateManyStateInputEnvelope = {
+  data: Prisma.EventCreateManyStateInput | Prisma.EventCreateManyStateInput[]
+  skipDuplicates?: boolean
 }
 
-export type EventUncheckedUpdateManyWithoutStateInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  mediaType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
-  publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  subcategoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  countryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+export type EventUpsertWithWhereUniqueWithoutStateInput = {
+  where: Prisma.EventWhereUniqueInput
+  update: Prisma.XOR<Prisma.EventUpdateWithoutStateInput, Prisma.EventUncheckedUpdateWithoutStateInput>
+  create: Prisma.XOR<Prisma.EventCreateWithoutStateInput, Prisma.EventUncheckedCreateWithoutStateInput>
+}
+
+export type EventUpdateWithWhereUniqueWithoutStateInput = {
+  where: Prisma.EventWhereUniqueInput
+  data: Prisma.XOR<Prisma.EventUpdateWithoutStateInput, Prisma.EventUncheckedUpdateWithoutStateInput>
+}
+
+export type EventUpdateManyWithWhereWithoutStateInput = {
+  where: Prisma.EventScalarWhereInput
+  data: Prisma.XOR<Prisma.EventUpdateManyMutationInput, Prisma.EventUncheckedUpdateManyWithoutStateInput>
 }
 
 export type EventCreateManyCategoryInput = {
@@ -1285,9 +1135,9 @@ export type EventUpdateWithoutCategoryInput = {
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  subcategory?: Prisma.subcategoryUpdateOneWithoutEventsNestedInput
-  country?: Prisma.countryUpdateOneWithoutEventsNestedInput
-  state?: Prisma.stateUpdateOneWithoutEventsNestedInput
+  subcategory?: Prisma.SubCategoryUpdateOneWithoutEventsNestedInput
+  country?: Prisma.CountryUpdateOneWithoutEventsNestedInput
+  state?: Prisma.StateUpdateOneWithoutEventsNestedInput
 }
 
 export type EventUncheckedUpdateWithoutCategoryInput = {
@@ -1360,9 +1210,9 @@ export type EventUpdateWithoutSubcategoryInput = {
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  category?: Prisma.categoryUpdateOneWithoutEventsNestedInput
-  country?: Prisma.countryUpdateOneWithoutEventsNestedInput
-  state?: Prisma.stateUpdateOneWithoutEventsNestedInput
+  category?: Prisma.CategoryUpdateOneWithoutEventsNestedInput
+  country?: Prisma.CountryUpdateOneWithoutEventsNestedInput
+  state?: Prisma.StateUpdateOneWithoutEventsNestedInput
 }
 
 export type EventUncheckedUpdateWithoutSubcategoryInput = {
@@ -1398,6 +1248,156 @@ export type EventUncheckedUpdateManyWithoutSubcategoryInput = {
   publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   stateId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  countryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type EventCreateManyCountryInput = {
+  id?: number
+  title: string
+  description?: string | null
+  content?: string | null
+  date: Date | string
+  mediaType?: string | null
+  file?: string | null
+  location?: string | null
+  language?: string | null
+  publishStatus?: $Enums.PublishStatus
+  publishDate: Date | string
+  categoryId?: number | null
+  subcategoryId?: number | null
+  stateId?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type EventUpdateWithoutCountryInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  mediaType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
+  publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  category?: Prisma.CategoryUpdateOneWithoutEventsNestedInput
+  subcategory?: Prisma.SubCategoryUpdateOneWithoutEventsNestedInput
+  state?: Prisma.StateUpdateOneWithoutEventsNestedInput
+}
+
+export type EventUncheckedUpdateWithoutCountryInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  mediaType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
+  publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  subcategoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  stateId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type EventUncheckedUpdateManyWithoutCountryInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  mediaType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
+  publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  subcategoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  stateId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type EventCreateManyStateInput = {
+  id?: number
+  title: string
+  description?: string | null
+  content?: string | null
+  date: Date | string
+  mediaType?: string | null
+  file?: string | null
+  location?: string | null
+  language?: string | null
+  publishStatus?: $Enums.PublishStatus
+  publishDate: Date | string
+  categoryId?: number | null
+  subcategoryId?: number | null
+  countryId?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type EventUpdateWithoutStateInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  mediaType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
+  publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  category?: Prisma.CategoryUpdateOneWithoutEventsNestedInput
+  subcategory?: Prisma.SubCategoryUpdateOneWithoutEventsNestedInput
+  country?: Prisma.CountryUpdateOneWithoutEventsNestedInput
+}
+
+export type EventUncheckedUpdateWithoutStateInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  mediaType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
+  publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  subcategoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  countryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type EventUncheckedUpdateManyWithoutStateInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  mediaType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishStatus?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
+  publishDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  subcategoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   countryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1520,10 +1520,10 @@ export type EventIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
 export type $EventPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Event"
   objects: {
-    category: Prisma.$categoryPayload<ExtArgs> | null
-    subcategory: Prisma.$subcategoryPayload<ExtArgs> | null
-    country: Prisma.$countryPayload<ExtArgs> | null
-    state: Prisma.$statePayload<ExtArgs> | null
+    category: Prisma.$CategoryPayload<ExtArgs> | null
+    subcategory: Prisma.$SubCategoryPayload<ExtArgs> | null
+    country: Prisma.$CountryPayload<ExtArgs> | null
+    state: Prisma.$StatePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1937,10 +1937,10 @@ readonly fields: EventFieldRefs;
  */
 export interface Prisma__EventClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  category<T extends Prisma.Event$categoryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Event$categoryArgs<ExtArgs>>): Prisma.Prisma__categoryClient<runtime.Types.Result.GetResult<Prisma.$categoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  subcategory<T extends Prisma.Event$subcategoryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Event$subcategoryArgs<ExtArgs>>): Prisma.Prisma__subcategoryClient<runtime.Types.Result.GetResult<Prisma.$subcategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  country<T extends Prisma.Event$countryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Event$countryArgs<ExtArgs>>): Prisma.Prisma__countryClient<runtime.Types.Result.GetResult<Prisma.$countryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  state<T extends Prisma.Event$stateArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Event$stateArgs<ExtArgs>>): Prisma.Prisma__stateClient<runtime.Types.Result.GetResult<Prisma.$statePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  category<T extends Prisma.Event$categoryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Event$categoryArgs<ExtArgs>>): Prisma.Prisma__CategoryClient<runtime.Types.Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  subcategory<T extends Prisma.Event$subcategoryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Event$subcategoryArgs<ExtArgs>>): Prisma.Prisma__SubCategoryClient<runtime.Types.Result.GetResult<Prisma.$SubCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  country<T extends Prisma.Event$countryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Event$countryArgs<ExtArgs>>): Prisma.Prisma__CountryClient<runtime.Types.Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  state<T extends Prisma.Event$stateArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Event$stateArgs<ExtArgs>>): Prisma.Prisma__StateClient<runtime.Types.Result.GetResult<Prisma.$StatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2387,18 +2387,18 @@ export type EventDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
  */
 export type Event$categoryArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the category
+   * Select specific fields to fetch from the Category
    */
-  select?: Prisma.categorySelect<ExtArgs> | null
+  select?: Prisma.CategorySelect<ExtArgs> | null
   /**
-   * Omit specific fields from the category
+   * Omit specific fields from the Category
    */
-  omit?: Prisma.categoryOmit<ExtArgs> | null
+  omit?: Prisma.CategoryOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.categoryInclude<ExtArgs> | null
-  where?: Prisma.categoryWhereInput
+  include?: Prisma.CategoryInclude<ExtArgs> | null
+  where?: Prisma.CategoryWhereInput
 }
 
 /**
@@ -2406,18 +2406,18 @@ export type Event$categoryArgs<ExtArgs extends runtime.Types.Extensions.Internal
  */
 export type Event$subcategoryArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the subcategory
+   * Select specific fields to fetch from the SubCategory
    */
-  select?: Prisma.subcategorySelect<ExtArgs> | null
+  select?: Prisma.SubCategorySelect<ExtArgs> | null
   /**
-   * Omit specific fields from the subcategory
+   * Omit specific fields from the SubCategory
    */
-  omit?: Prisma.subcategoryOmit<ExtArgs> | null
+  omit?: Prisma.SubCategoryOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.subcategoryInclude<ExtArgs> | null
-  where?: Prisma.subcategoryWhereInput
+  include?: Prisma.SubCategoryInclude<ExtArgs> | null
+  where?: Prisma.SubCategoryWhereInput
 }
 
 /**
@@ -2425,18 +2425,18 @@ export type Event$subcategoryArgs<ExtArgs extends runtime.Types.Extensions.Inter
  */
 export type Event$countryArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the country
+   * Select specific fields to fetch from the Country
    */
-  select?: Prisma.countrySelect<ExtArgs> | null
+  select?: Prisma.CountrySelect<ExtArgs> | null
   /**
-   * Omit specific fields from the country
+   * Omit specific fields from the Country
    */
-  omit?: Prisma.countryOmit<ExtArgs> | null
+  omit?: Prisma.CountryOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.countryInclude<ExtArgs> | null
-  where?: Prisma.countryWhereInput
+  include?: Prisma.CountryInclude<ExtArgs> | null
+  where?: Prisma.CountryWhereInput
 }
 
 /**
@@ -2444,18 +2444,18 @@ export type Event$countryArgs<ExtArgs extends runtime.Types.Extensions.InternalA
  */
 export type Event$stateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the state
+   * Select specific fields to fetch from the State
    */
-  select?: Prisma.stateSelect<ExtArgs> | null
+  select?: Prisma.StateSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the state
+   * Omit specific fields from the State
    */
-  omit?: Prisma.stateOmit<ExtArgs> | null
+  omit?: Prisma.StateOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.stateInclude<ExtArgs> | null
-  where?: Prisma.stateWhereInput
+  include?: Prisma.StateInclude<ExtArgs> | null
+  where?: Prisma.StateWhereInput
 }
 
 /**

@@ -4,7 +4,7 @@
 // biome-ignore-all lint: generated file
 // @ts-nocheck 
 /*
- * This file exports the `state` model and its related types.
+ * This file exports the `State` model and its related types.
  *
  * 🟢 You can import this file directly.
  */
@@ -13,10 +13,10 @@ import type * as $Enums from "../enums.ts"
 import type * as Prisma from "../internal/prismaNamespace.ts"
 
 /**
- * Model state
+ * Model State
  * 
  */
-export type stateModel = runtime.Types.Result.DefaultSelection<Prisma.$statePayload>
+export type StateModel = runtime.Types.Result.DefaultSelection<Prisma.$StatePayload>
 
 export type AggregateState = {
   _count: StateCountAggregateOutputType | null
@@ -93,37 +93,37 @@ export type StateCountAggregateInputType = {
 
 export type StateAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which state to aggregate.
+   * Filter which State to aggregate.
    */
-  where?: Prisma.stateWhereInput
+  where?: Prisma.StateWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of states to fetch.
+   * Determine the order of States to fetch.
    */
-  orderBy?: Prisma.stateOrderByWithRelationInput | Prisma.stateOrderByWithRelationInput[]
+  orderBy?: Prisma.StateOrderByWithRelationInput | Prisma.StateOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
    * Sets the start position
    */
-  cursor?: Prisma.stateWhereUniqueInput
+  cursor?: Prisma.StateWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` states from the position of the cursor.
+   * Take `±n` States from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` states.
+   * Skip the first `n` States.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Count returned states
+   * Count returned States
   **/
   _count?: true | StateCountAggregateInputType
   /**
@@ -163,11 +163,11 @@ export type GetStateAggregateType<T extends StateAggregateArgs> = {
 
 
 
-export type stateGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.stateWhereInput
-  orderBy?: Prisma.stateOrderByWithAggregationInput | Prisma.stateOrderByWithAggregationInput[]
+export type StateGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StateWhereInput
+  orderBy?: Prisma.StateOrderByWithAggregationInput | Prisma.StateOrderByWithAggregationInput[]
   by: Prisma.StateScalarFieldEnum[] | Prisma.StateScalarFieldEnum
-  having?: Prisma.stateScalarWhereWithAggregatesInput
+  having?: Prisma.StateScalarWhereWithAggregatesInput
   take?: number
   skip?: number
   _count?: StateCountAggregateInputType | true
@@ -189,7 +189,7 @@ export type StateGroupByOutputType = {
   _max: StateMaxAggregateOutputType | null
 }
 
-type GetStateGroupByPayload<T extends stateGroupByArgs> = Prisma.PrismaPromise<
+type GetStateGroupByPayload<T extends StateGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<StateGroupByOutputType, T['by']> &
       {
@@ -204,69 +204,69 @@ type GetStateGroupByPayload<T extends stateGroupByArgs> = Prisma.PrismaPromise<
 
 
 
-export type stateWhereInput = {
-  AND?: Prisma.stateWhereInput | Prisma.stateWhereInput[]
-  OR?: Prisma.stateWhereInput[]
-  NOT?: Prisma.stateWhereInput | Prisma.stateWhereInput[]
-  id?: Prisma.IntFilter<"state"> | number
-  name?: Prisma.StringFilter<"state"> | string
-  countryId?: Prisma.IntFilter<"state"> | number
-  createdAt?: Prisma.DateTimeFilter<"state"> | Date | string
-  country?: Prisma.XOR<Prisma.CountryScalarRelationFilter, Prisma.countryWhereInput>
+export type StateWhereInput = {
+  AND?: Prisma.StateWhereInput | Prisma.StateWhereInput[]
+  OR?: Prisma.StateWhereInput[]
+  NOT?: Prisma.StateWhereInput | Prisma.StateWhereInput[]
+  id?: Prisma.IntFilter<"State"> | number
+  name?: Prisma.StringFilter<"State"> | string
+  countryId?: Prisma.IntFilter<"State"> | number
+  createdAt?: Prisma.DateTimeFilter<"State"> | Date | string
+  country?: Prisma.XOR<Prisma.CountryScalarRelationFilter, Prisma.CountryWhereInput>
   events?: Prisma.EventListRelationFilter
 }
 
-export type stateOrderByWithRelationInput = {
+export type StateOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  country?: Prisma.countryOrderByWithRelationInput
+  country?: Prisma.CountryOrderByWithRelationInput
   events?: Prisma.EventOrderByRelationAggregateInput
 }
 
-export type stateWhereUniqueInput = Prisma.AtLeast<{
+export type StateWhereUniqueInput = Prisma.AtLeast<{
   id?: number
-  AND?: Prisma.stateWhereInput | Prisma.stateWhereInput[]
-  OR?: Prisma.stateWhereInput[]
-  NOT?: Prisma.stateWhereInput | Prisma.stateWhereInput[]
-  name?: Prisma.StringFilter<"state"> | string
-  countryId?: Prisma.IntFilter<"state"> | number
-  createdAt?: Prisma.DateTimeFilter<"state"> | Date | string
-  country?: Prisma.XOR<Prisma.CountryScalarRelationFilter, Prisma.countryWhereInput>
+  name?: string
+  AND?: Prisma.StateWhereInput | Prisma.StateWhereInput[]
+  OR?: Prisma.StateWhereInput[]
+  NOT?: Prisma.StateWhereInput | Prisma.StateWhereInput[]
+  countryId?: Prisma.IntFilter<"State"> | number
+  createdAt?: Prisma.DateTimeFilter<"State"> | Date | string
+  country?: Prisma.XOR<Prisma.CountryScalarRelationFilter, Prisma.CountryWhereInput>
   events?: Prisma.EventListRelationFilter
-}, "id">
+}, "id" | "name">
 
-export type stateOrderByWithAggregationInput = {
+export type StateOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  _count?: Prisma.stateCountOrderByAggregateInput
-  _avg?: Prisma.stateAvgOrderByAggregateInput
-  _max?: Prisma.stateMaxOrderByAggregateInput
-  _min?: Prisma.stateMinOrderByAggregateInput
-  _sum?: Prisma.stateSumOrderByAggregateInput
+  _count?: Prisma.StateCountOrderByAggregateInput
+  _avg?: Prisma.StateAvgOrderByAggregateInput
+  _max?: Prisma.StateMaxOrderByAggregateInput
+  _min?: Prisma.StateMinOrderByAggregateInput
+  _sum?: Prisma.StateSumOrderByAggregateInput
 }
 
-export type stateScalarWhereWithAggregatesInput = {
-  AND?: Prisma.stateScalarWhereWithAggregatesInput | Prisma.stateScalarWhereWithAggregatesInput[]
-  OR?: Prisma.stateScalarWhereWithAggregatesInput[]
-  NOT?: Prisma.stateScalarWhereWithAggregatesInput | Prisma.stateScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"state"> | number
-  name?: Prisma.StringWithAggregatesFilter<"state"> | string
-  countryId?: Prisma.IntWithAggregatesFilter<"state"> | number
-  createdAt?: Prisma.DateTimeWithAggregatesFilter<"state"> | Date | string
+export type StateScalarWhereWithAggregatesInput = {
+  AND?: Prisma.StateScalarWhereWithAggregatesInput | Prisma.StateScalarWhereWithAggregatesInput[]
+  OR?: Prisma.StateScalarWhereWithAggregatesInput[]
+  NOT?: Prisma.StateScalarWhereWithAggregatesInput | Prisma.StateScalarWhereWithAggregatesInput[]
+  id?: Prisma.IntWithAggregatesFilter<"State"> | number
+  name?: Prisma.StringWithAggregatesFilter<"State"> | string
+  countryId?: Prisma.IntWithAggregatesFilter<"State"> | number
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"State"> | Date | string
 }
 
-export type stateCreateInput = {
+export type StateCreateInput = {
   name: string
   createdAt?: Date | string
-  country: Prisma.countryCreateNestedOneWithoutStatesInput
+  country: Prisma.CountryCreateNestedOneWithoutStatesInput
   events?: Prisma.EventCreateNestedManyWithoutStateInput
 }
 
-export type stateUncheckedCreateInput = {
+export type StateUncheckedCreateInput = {
   id?: number
   name: string
   countryId: number
@@ -274,14 +274,14 @@ export type stateUncheckedCreateInput = {
   events?: Prisma.EventUncheckedCreateNestedManyWithoutStateInput
 }
 
-export type stateUpdateInput = {
+export type StateUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  country?: Prisma.countryUpdateOneRequiredWithoutStatesNestedInput
+  country?: Prisma.CountryUpdateOneRequiredWithoutStatesNestedInput
   events?: Prisma.EventUpdateManyWithoutStateNestedInput
 }
 
-export type stateUncheckedUpdateInput = {
+export type StateUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   countryId?: Prisma.IntFieldUpdateOperationsInput | number
@@ -289,19 +289,19 @@ export type stateUncheckedUpdateInput = {
   events?: Prisma.EventUncheckedUpdateManyWithoutStateNestedInput
 }
 
-export type stateCreateManyInput = {
+export type StateCreateManyInput = {
   id?: number
   name: string
   countryId: number
   createdAt?: Date | string
 }
 
-export type stateUpdateManyMutationInput = {
+export type StateUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type stateUncheckedUpdateManyInput = {
+export type StateUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   countryId?: Prisma.IntFieldUpdateOperationsInput | number
@@ -309,220 +309,220 @@ export type stateUncheckedUpdateManyInput = {
 }
 
 export type StateListRelationFilter = {
-  every?: Prisma.stateWhereInput
-  some?: Prisma.stateWhereInput
-  none?: Prisma.stateWhereInput
+  every?: Prisma.StateWhereInput
+  some?: Prisma.StateWhereInput
+  none?: Prisma.StateWhereInput
 }
 
-export type stateOrderByRelationAggregateInput = {
+export type StateOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type stateCountOrderByAggregateInput = {
+export type StateCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
-export type stateAvgOrderByAggregateInput = {
+export type StateAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
 }
 
-export type stateMaxOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
-  countryId?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-}
-
-export type stateMinOrderByAggregateInput = {
+export type StateMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
-export type stateSumOrderByAggregateInput = {
+export type StateMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  countryId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+}
+
+export type StateSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
 }
 
 export type StateNullableScalarRelationFilter = {
-  is?: Prisma.stateWhereInput | null
-  isNot?: Prisma.stateWhereInput | null
+  is?: Prisma.StateWhereInput | null
+  isNot?: Prisma.StateWhereInput | null
 }
 
-export type stateCreateNestedManyWithoutCountryInput = {
-  create?: Prisma.XOR<Prisma.stateCreateWithoutCountryInput, Prisma.stateUncheckedCreateWithoutCountryInput> | Prisma.stateCreateWithoutCountryInput[] | Prisma.stateUncheckedCreateWithoutCountryInput[]
-  connectOrCreate?: Prisma.stateCreateOrConnectWithoutCountryInput | Prisma.stateCreateOrConnectWithoutCountryInput[]
-  createMany?: Prisma.stateCreateManyCountryInputEnvelope
-  connect?: Prisma.stateWhereUniqueInput | Prisma.stateWhereUniqueInput[]
+export type StateCreateNestedManyWithoutCountryInput = {
+  create?: Prisma.XOR<Prisma.StateCreateWithoutCountryInput, Prisma.StateUncheckedCreateWithoutCountryInput> | Prisma.StateCreateWithoutCountryInput[] | Prisma.StateUncheckedCreateWithoutCountryInput[]
+  connectOrCreate?: Prisma.StateCreateOrConnectWithoutCountryInput | Prisma.StateCreateOrConnectWithoutCountryInput[]
+  createMany?: Prisma.StateCreateManyCountryInputEnvelope
+  connect?: Prisma.StateWhereUniqueInput | Prisma.StateWhereUniqueInput[]
 }
 
-export type stateUncheckedCreateNestedManyWithoutCountryInput = {
-  create?: Prisma.XOR<Prisma.stateCreateWithoutCountryInput, Prisma.stateUncheckedCreateWithoutCountryInput> | Prisma.stateCreateWithoutCountryInput[] | Prisma.stateUncheckedCreateWithoutCountryInput[]
-  connectOrCreate?: Prisma.stateCreateOrConnectWithoutCountryInput | Prisma.stateCreateOrConnectWithoutCountryInput[]
-  createMany?: Prisma.stateCreateManyCountryInputEnvelope
-  connect?: Prisma.stateWhereUniqueInput | Prisma.stateWhereUniqueInput[]
+export type StateUncheckedCreateNestedManyWithoutCountryInput = {
+  create?: Prisma.XOR<Prisma.StateCreateWithoutCountryInput, Prisma.StateUncheckedCreateWithoutCountryInput> | Prisma.StateCreateWithoutCountryInput[] | Prisma.StateUncheckedCreateWithoutCountryInput[]
+  connectOrCreate?: Prisma.StateCreateOrConnectWithoutCountryInput | Prisma.StateCreateOrConnectWithoutCountryInput[]
+  createMany?: Prisma.StateCreateManyCountryInputEnvelope
+  connect?: Prisma.StateWhereUniqueInput | Prisma.StateWhereUniqueInput[]
 }
 
-export type stateUpdateManyWithoutCountryNestedInput = {
-  create?: Prisma.XOR<Prisma.stateCreateWithoutCountryInput, Prisma.stateUncheckedCreateWithoutCountryInput> | Prisma.stateCreateWithoutCountryInput[] | Prisma.stateUncheckedCreateWithoutCountryInput[]
-  connectOrCreate?: Prisma.stateCreateOrConnectWithoutCountryInput | Prisma.stateCreateOrConnectWithoutCountryInput[]
-  upsert?: Prisma.stateUpsertWithWhereUniqueWithoutCountryInput | Prisma.stateUpsertWithWhereUniqueWithoutCountryInput[]
-  createMany?: Prisma.stateCreateManyCountryInputEnvelope
-  set?: Prisma.stateWhereUniqueInput | Prisma.stateWhereUniqueInput[]
-  disconnect?: Prisma.stateWhereUniqueInput | Prisma.stateWhereUniqueInput[]
-  delete?: Prisma.stateWhereUniqueInput | Prisma.stateWhereUniqueInput[]
-  connect?: Prisma.stateWhereUniqueInput | Prisma.stateWhereUniqueInput[]
-  update?: Prisma.stateUpdateWithWhereUniqueWithoutCountryInput | Prisma.stateUpdateWithWhereUniqueWithoutCountryInput[]
-  updateMany?: Prisma.stateUpdateManyWithWhereWithoutCountryInput | Prisma.stateUpdateManyWithWhereWithoutCountryInput[]
-  deleteMany?: Prisma.stateScalarWhereInput | Prisma.stateScalarWhereInput[]
+export type StateUpdateManyWithoutCountryNestedInput = {
+  create?: Prisma.XOR<Prisma.StateCreateWithoutCountryInput, Prisma.StateUncheckedCreateWithoutCountryInput> | Prisma.StateCreateWithoutCountryInput[] | Prisma.StateUncheckedCreateWithoutCountryInput[]
+  connectOrCreate?: Prisma.StateCreateOrConnectWithoutCountryInput | Prisma.StateCreateOrConnectWithoutCountryInput[]
+  upsert?: Prisma.StateUpsertWithWhereUniqueWithoutCountryInput | Prisma.StateUpsertWithWhereUniqueWithoutCountryInput[]
+  createMany?: Prisma.StateCreateManyCountryInputEnvelope
+  set?: Prisma.StateWhereUniqueInput | Prisma.StateWhereUniqueInput[]
+  disconnect?: Prisma.StateWhereUniqueInput | Prisma.StateWhereUniqueInput[]
+  delete?: Prisma.StateWhereUniqueInput | Prisma.StateWhereUniqueInput[]
+  connect?: Prisma.StateWhereUniqueInput | Prisma.StateWhereUniqueInput[]
+  update?: Prisma.StateUpdateWithWhereUniqueWithoutCountryInput | Prisma.StateUpdateWithWhereUniqueWithoutCountryInput[]
+  updateMany?: Prisma.StateUpdateManyWithWhereWithoutCountryInput | Prisma.StateUpdateManyWithWhereWithoutCountryInput[]
+  deleteMany?: Prisma.StateScalarWhereInput | Prisma.StateScalarWhereInput[]
 }
 
-export type stateUncheckedUpdateManyWithoutCountryNestedInput = {
-  create?: Prisma.XOR<Prisma.stateCreateWithoutCountryInput, Prisma.stateUncheckedCreateWithoutCountryInput> | Prisma.stateCreateWithoutCountryInput[] | Prisma.stateUncheckedCreateWithoutCountryInput[]
-  connectOrCreate?: Prisma.stateCreateOrConnectWithoutCountryInput | Prisma.stateCreateOrConnectWithoutCountryInput[]
-  upsert?: Prisma.stateUpsertWithWhereUniqueWithoutCountryInput | Prisma.stateUpsertWithWhereUniqueWithoutCountryInput[]
-  createMany?: Prisma.stateCreateManyCountryInputEnvelope
-  set?: Prisma.stateWhereUniqueInput | Prisma.stateWhereUniqueInput[]
-  disconnect?: Prisma.stateWhereUniqueInput | Prisma.stateWhereUniqueInput[]
-  delete?: Prisma.stateWhereUniqueInput | Prisma.stateWhereUniqueInput[]
-  connect?: Prisma.stateWhereUniqueInput | Prisma.stateWhereUniqueInput[]
-  update?: Prisma.stateUpdateWithWhereUniqueWithoutCountryInput | Prisma.stateUpdateWithWhereUniqueWithoutCountryInput[]
-  updateMany?: Prisma.stateUpdateManyWithWhereWithoutCountryInput | Prisma.stateUpdateManyWithWhereWithoutCountryInput[]
-  deleteMany?: Prisma.stateScalarWhereInput | Prisma.stateScalarWhereInput[]
+export type StateUncheckedUpdateManyWithoutCountryNestedInput = {
+  create?: Prisma.XOR<Prisma.StateCreateWithoutCountryInput, Prisma.StateUncheckedCreateWithoutCountryInput> | Prisma.StateCreateWithoutCountryInput[] | Prisma.StateUncheckedCreateWithoutCountryInput[]
+  connectOrCreate?: Prisma.StateCreateOrConnectWithoutCountryInput | Prisma.StateCreateOrConnectWithoutCountryInput[]
+  upsert?: Prisma.StateUpsertWithWhereUniqueWithoutCountryInput | Prisma.StateUpsertWithWhereUniqueWithoutCountryInput[]
+  createMany?: Prisma.StateCreateManyCountryInputEnvelope
+  set?: Prisma.StateWhereUniqueInput | Prisma.StateWhereUniqueInput[]
+  disconnect?: Prisma.StateWhereUniqueInput | Prisma.StateWhereUniqueInput[]
+  delete?: Prisma.StateWhereUniqueInput | Prisma.StateWhereUniqueInput[]
+  connect?: Prisma.StateWhereUniqueInput | Prisma.StateWhereUniqueInput[]
+  update?: Prisma.StateUpdateWithWhereUniqueWithoutCountryInput | Prisma.StateUpdateWithWhereUniqueWithoutCountryInput[]
+  updateMany?: Prisma.StateUpdateManyWithWhereWithoutCountryInput | Prisma.StateUpdateManyWithWhereWithoutCountryInput[]
+  deleteMany?: Prisma.StateScalarWhereInput | Prisma.StateScalarWhereInput[]
 }
 
-export type stateCreateNestedOneWithoutEventsInput = {
-  create?: Prisma.XOR<Prisma.stateCreateWithoutEventsInput, Prisma.stateUncheckedCreateWithoutEventsInput>
-  connectOrCreate?: Prisma.stateCreateOrConnectWithoutEventsInput
-  connect?: Prisma.stateWhereUniqueInput
+export type StateCreateNestedOneWithoutEventsInput = {
+  create?: Prisma.XOR<Prisma.StateCreateWithoutEventsInput, Prisma.StateUncheckedCreateWithoutEventsInput>
+  connectOrCreate?: Prisma.StateCreateOrConnectWithoutEventsInput
+  connect?: Prisma.StateWhereUniqueInput
 }
 
-export type stateUpdateOneWithoutEventsNestedInput = {
-  create?: Prisma.XOR<Prisma.stateCreateWithoutEventsInput, Prisma.stateUncheckedCreateWithoutEventsInput>
-  connectOrCreate?: Prisma.stateCreateOrConnectWithoutEventsInput
-  upsert?: Prisma.stateUpsertWithoutEventsInput
-  disconnect?: Prisma.stateWhereInput | boolean
-  delete?: Prisma.stateWhereInput | boolean
-  connect?: Prisma.stateWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.stateUpdateToOneWithWhereWithoutEventsInput, Prisma.stateUpdateWithoutEventsInput>, Prisma.stateUncheckedUpdateWithoutEventsInput>
+export type StateUpdateOneWithoutEventsNestedInput = {
+  create?: Prisma.XOR<Prisma.StateCreateWithoutEventsInput, Prisma.StateUncheckedCreateWithoutEventsInput>
+  connectOrCreate?: Prisma.StateCreateOrConnectWithoutEventsInput
+  upsert?: Prisma.StateUpsertWithoutEventsInput
+  disconnect?: Prisma.StateWhereInput | boolean
+  delete?: Prisma.StateWhereInput | boolean
+  connect?: Prisma.StateWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StateUpdateToOneWithWhereWithoutEventsInput, Prisma.StateUpdateWithoutEventsInput>, Prisma.StateUncheckedUpdateWithoutEventsInput>
 }
 
-export type stateCreateWithoutCountryInput = {
+export type StateCreateWithoutCountryInput = {
   name: string
   createdAt?: Date | string
   events?: Prisma.EventCreateNestedManyWithoutStateInput
 }
 
-export type stateUncheckedCreateWithoutCountryInput = {
+export type StateUncheckedCreateWithoutCountryInput = {
   id?: number
   name: string
   createdAt?: Date | string
   events?: Prisma.EventUncheckedCreateNestedManyWithoutStateInput
 }
 
-export type stateCreateOrConnectWithoutCountryInput = {
-  where: Prisma.stateWhereUniqueInput
-  create: Prisma.XOR<Prisma.stateCreateWithoutCountryInput, Prisma.stateUncheckedCreateWithoutCountryInput>
+export type StateCreateOrConnectWithoutCountryInput = {
+  where: Prisma.StateWhereUniqueInput
+  create: Prisma.XOR<Prisma.StateCreateWithoutCountryInput, Prisma.StateUncheckedCreateWithoutCountryInput>
 }
 
-export type stateCreateManyCountryInputEnvelope = {
-  data: Prisma.stateCreateManyCountryInput | Prisma.stateCreateManyCountryInput[]
+export type StateCreateManyCountryInputEnvelope = {
+  data: Prisma.StateCreateManyCountryInput | Prisma.StateCreateManyCountryInput[]
   skipDuplicates?: boolean
 }
 
-export type stateUpsertWithWhereUniqueWithoutCountryInput = {
-  where: Prisma.stateWhereUniqueInput
-  update: Prisma.XOR<Prisma.stateUpdateWithoutCountryInput, Prisma.stateUncheckedUpdateWithoutCountryInput>
-  create: Prisma.XOR<Prisma.stateCreateWithoutCountryInput, Prisma.stateUncheckedCreateWithoutCountryInput>
+export type StateUpsertWithWhereUniqueWithoutCountryInput = {
+  where: Prisma.StateWhereUniqueInput
+  update: Prisma.XOR<Prisma.StateUpdateWithoutCountryInput, Prisma.StateUncheckedUpdateWithoutCountryInput>
+  create: Prisma.XOR<Prisma.StateCreateWithoutCountryInput, Prisma.StateUncheckedCreateWithoutCountryInput>
 }
 
-export type stateUpdateWithWhereUniqueWithoutCountryInput = {
-  where: Prisma.stateWhereUniqueInput
-  data: Prisma.XOR<Prisma.stateUpdateWithoutCountryInput, Prisma.stateUncheckedUpdateWithoutCountryInput>
+export type StateUpdateWithWhereUniqueWithoutCountryInput = {
+  where: Prisma.StateWhereUniqueInput
+  data: Prisma.XOR<Prisma.StateUpdateWithoutCountryInput, Prisma.StateUncheckedUpdateWithoutCountryInput>
 }
 
-export type stateUpdateManyWithWhereWithoutCountryInput = {
-  where: Prisma.stateScalarWhereInput
-  data: Prisma.XOR<Prisma.stateUpdateManyMutationInput, Prisma.stateUncheckedUpdateManyWithoutCountryInput>
+export type StateUpdateManyWithWhereWithoutCountryInput = {
+  where: Prisma.StateScalarWhereInput
+  data: Prisma.XOR<Prisma.StateUpdateManyMutationInput, Prisma.StateUncheckedUpdateManyWithoutCountryInput>
 }
 
-export type stateScalarWhereInput = {
-  AND?: Prisma.stateScalarWhereInput | Prisma.stateScalarWhereInput[]
-  OR?: Prisma.stateScalarWhereInput[]
-  NOT?: Prisma.stateScalarWhereInput | Prisma.stateScalarWhereInput[]
-  id?: Prisma.IntFilter<"state"> | number
-  name?: Prisma.StringFilter<"state"> | string
-  countryId?: Prisma.IntFilter<"state"> | number
-  createdAt?: Prisma.DateTimeFilter<"state"> | Date | string
+export type StateScalarWhereInput = {
+  AND?: Prisma.StateScalarWhereInput | Prisma.StateScalarWhereInput[]
+  OR?: Prisma.StateScalarWhereInput[]
+  NOT?: Prisma.StateScalarWhereInput | Prisma.StateScalarWhereInput[]
+  id?: Prisma.IntFilter<"State"> | number
+  name?: Prisma.StringFilter<"State"> | string
+  countryId?: Prisma.IntFilter<"State"> | number
+  createdAt?: Prisma.DateTimeFilter<"State"> | Date | string
 }
 
-export type stateCreateWithoutEventsInput = {
+export type StateCreateWithoutEventsInput = {
   name: string
   createdAt?: Date | string
-  country: Prisma.countryCreateNestedOneWithoutStatesInput
+  country: Prisma.CountryCreateNestedOneWithoutStatesInput
 }
 
-export type stateUncheckedCreateWithoutEventsInput = {
+export type StateUncheckedCreateWithoutEventsInput = {
   id?: number
   name: string
   countryId: number
   createdAt?: Date | string
 }
 
-export type stateCreateOrConnectWithoutEventsInput = {
-  where: Prisma.stateWhereUniqueInput
-  create: Prisma.XOR<Prisma.stateCreateWithoutEventsInput, Prisma.stateUncheckedCreateWithoutEventsInput>
+export type StateCreateOrConnectWithoutEventsInput = {
+  where: Prisma.StateWhereUniqueInput
+  create: Prisma.XOR<Prisma.StateCreateWithoutEventsInput, Prisma.StateUncheckedCreateWithoutEventsInput>
 }
 
-export type stateUpsertWithoutEventsInput = {
-  update: Prisma.XOR<Prisma.stateUpdateWithoutEventsInput, Prisma.stateUncheckedUpdateWithoutEventsInput>
-  create: Prisma.XOR<Prisma.stateCreateWithoutEventsInput, Prisma.stateUncheckedCreateWithoutEventsInput>
-  where?: Prisma.stateWhereInput
+export type StateUpsertWithoutEventsInput = {
+  update: Prisma.XOR<Prisma.StateUpdateWithoutEventsInput, Prisma.StateUncheckedUpdateWithoutEventsInput>
+  create: Prisma.XOR<Prisma.StateCreateWithoutEventsInput, Prisma.StateUncheckedCreateWithoutEventsInput>
+  where?: Prisma.StateWhereInput
 }
 
-export type stateUpdateToOneWithWhereWithoutEventsInput = {
-  where?: Prisma.stateWhereInput
-  data: Prisma.XOR<Prisma.stateUpdateWithoutEventsInput, Prisma.stateUncheckedUpdateWithoutEventsInput>
+export type StateUpdateToOneWithWhereWithoutEventsInput = {
+  where?: Prisma.StateWhereInput
+  data: Prisma.XOR<Prisma.StateUpdateWithoutEventsInput, Prisma.StateUncheckedUpdateWithoutEventsInput>
 }
 
-export type stateUpdateWithoutEventsInput = {
+export type StateUpdateWithoutEventsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  country?: Prisma.countryUpdateOneRequiredWithoutStatesNestedInput
+  country?: Prisma.CountryUpdateOneRequiredWithoutStatesNestedInput
 }
 
-export type stateUncheckedUpdateWithoutEventsInput = {
+export type StateUncheckedUpdateWithoutEventsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   countryId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type stateCreateManyCountryInput = {
+export type StateCreateManyCountryInput = {
   id?: number
   name: string
   createdAt?: Date | string
 }
 
-export type stateUpdateWithoutCountryInput = {
+export type StateUpdateWithoutCountryInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   events?: Prisma.EventUpdateManyWithoutStateNestedInput
 }
 
-export type stateUncheckedUpdateWithoutCountryInput = {
+export type StateUncheckedUpdateWithoutCountryInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   events?: Prisma.EventUncheckedUpdateManyWithoutStateNestedInput
 }
 
-export type stateUncheckedUpdateManyWithoutCountryInput = {
+export type StateUncheckedUpdateManyWithoutCountryInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -559,56 +559,56 @@ export type StateCountOutputTypeCountEventsArgs<ExtArgs extends runtime.Types.Ex
 }
 
 
-export type stateSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type StateSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
   countryId?: boolean
   createdAt?: boolean
-  country?: boolean | Prisma.countryDefaultArgs<ExtArgs>
-  events?: boolean | Prisma.state$eventsArgs<ExtArgs>
+  country?: boolean | Prisma.CountryDefaultArgs<ExtArgs>
+  events?: boolean | Prisma.State$eventsArgs<ExtArgs>
   _count?: boolean | Prisma.StateCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["state"]>
 
-export type stateSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type StateSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
   countryId?: boolean
   createdAt?: boolean
-  country?: boolean | Prisma.countryDefaultArgs<ExtArgs>
+  country?: boolean | Prisma.CountryDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["state"]>
 
-export type stateSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type StateSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
   countryId?: boolean
   createdAt?: boolean
-  country?: boolean | Prisma.countryDefaultArgs<ExtArgs>
+  country?: boolean | Prisma.CountryDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["state"]>
 
-export type stateSelectScalar = {
+export type StateSelectScalar = {
   id?: boolean
   name?: boolean
   countryId?: boolean
   createdAt?: boolean
 }
 
-export type stateOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "countryId" | "createdAt", ExtArgs["result"]["state"]>
-export type stateInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  country?: boolean | Prisma.countryDefaultArgs<ExtArgs>
-  events?: boolean | Prisma.state$eventsArgs<ExtArgs>
+export type StateOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "countryId" | "createdAt", ExtArgs["result"]["state"]>
+export type StateInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  country?: boolean | Prisma.CountryDefaultArgs<ExtArgs>
+  events?: boolean | Prisma.State$eventsArgs<ExtArgs>
   _count?: boolean | Prisma.StateCountOutputTypeDefaultArgs<ExtArgs>
 }
-export type stateIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  country?: boolean | Prisma.countryDefaultArgs<ExtArgs>
+export type StateIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  country?: boolean | Prisma.CountryDefaultArgs<ExtArgs>
 }
-export type stateIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  country?: boolean | Prisma.countryDefaultArgs<ExtArgs>
+export type StateIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  country?: boolean | Prisma.CountryDefaultArgs<ExtArgs>
 }
 
-export type $statePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  name: "state"
+export type $StatePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  name: "State"
   objects: {
-    country: Prisma.$countryPayload<ExtArgs>
+    country: Prisma.$CountryPayload<ExtArgs>
     events: Prisma.$EventPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -620,18 +620,18 @@ export type $statePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   composites: {}
 }
 
-export type stateGetPayload<S extends boolean | null | undefined | stateDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$statePayload, S>
+export type StateGetPayload<S extends boolean | null | undefined | StateDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$StatePayload, S>
 
-export type stateCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
-  Omit<stateFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+export type StateCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
+  Omit<StateFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
     select?: StateCountAggregateInputType | true
   }
 
-export interface stateDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['state'], meta: { name: 'state' } }
+export interface StateDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['State'], meta: { name: 'State' } }
   /**
    * Find zero or one State that matches the filter.
-   * @param {stateFindUniqueArgs} args - Arguments to find a State
+   * @param {StateFindUniqueArgs} args - Arguments to find a State
    * @example
    * // Get one State
    * const state = await prisma.state.findUnique({
@@ -640,12 +640,12 @@ export interface stateDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    *   }
    * })
    */
-  findUnique<T extends stateFindUniqueArgs>(args: Prisma.SelectSubset<T, stateFindUniqueArgs<ExtArgs>>): Prisma.Prisma__stateClient<runtime.Types.Result.GetResult<Prisma.$statePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findUnique<T extends StateFindUniqueArgs>(args: Prisma.SelectSubset<T, StateFindUniqueArgs<ExtArgs>>): Prisma.Prisma__StateClient<runtime.Types.Result.GetResult<Prisma.$StatePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find one State that matches the filter or throw an error with `error.code='P2025'`
    * if no matches were found.
-   * @param {stateFindUniqueOrThrowArgs} args - Arguments to find a State
+   * @param {StateFindUniqueOrThrowArgs} args - Arguments to find a State
    * @example
    * // Get one State
    * const state = await prisma.state.findUniqueOrThrow({
@@ -654,13 +654,13 @@ export interface stateDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    *   }
    * })
    */
-  findUniqueOrThrow<T extends stateFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, stateFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__stateClient<runtime.Types.Result.GetResult<Prisma.$statePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findUniqueOrThrow<T extends StateFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, StateFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__StateClient<runtime.Types.Result.GetResult<Prisma.$StatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find the first State that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {stateFindFirstArgs} args - Arguments to find a State
+   * @param {StateFindFirstArgs} args - Arguments to find a State
    * @example
    * // Get one State
    * const state = await prisma.state.findFirst({
@@ -669,14 +669,14 @@ export interface stateDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    *   }
    * })
    */
-  findFirst<T extends stateFindFirstArgs>(args?: Prisma.SelectSubset<T, stateFindFirstArgs<ExtArgs>>): Prisma.Prisma__stateClient<runtime.Types.Result.GetResult<Prisma.$statePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findFirst<T extends StateFindFirstArgs>(args?: Prisma.SelectSubset<T, StateFindFirstArgs<ExtArgs>>): Prisma.Prisma__StateClient<runtime.Types.Result.GetResult<Prisma.$StatePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find the first State that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {stateFindFirstOrThrowArgs} args - Arguments to find a State
+   * @param {StateFindFirstOrThrowArgs} args - Arguments to find a State
    * @example
    * // Get one State
    * const state = await prisma.state.findFirstOrThrow({
@@ -685,13 +685,13 @@ export interface stateDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    *   }
    * })
    */
-  findFirstOrThrow<T extends stateFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, stateFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__stateClient<runtime.Types.Result.GetResult<Prisma.$statePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findFirstOrThrow<T extends StateFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, StateFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__StateClient<runtime.Types.Result.GetResult<Prisma.$StatePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find zero or more States that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {stateFindManyArgs} args - Arguments to filter and select certain fields only.
+   * @param {StateFindManyArgs} args - Arguments to filter and select certain fields only.
    * @example
    * // Get all States
    * const states = await prisma.state.findMany()
@@ -703,11 +703,11 @@ export interface stateDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * const stateWithIdOnly = await prisma.state.findMany({ select: { id: true } })
    * 
    */
-  findMany<T extends stateFindManyArgs>(args?: Prisma.SelectSubset<T, stateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$statePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+  findMany<T extends StateFindManyArgs>(args?: Prisma.SelectSubset<T, StateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
   /**
    * Create a State.
-   * @param {stateCreateArgs} args - Arguments to create a State.
+   * @param {StateCreateArgs} args - Arguments to create a State.
    * @example
    * // Create one State
    * const State = await prisma.state.create({
@@ -717,11 +717,11 @@ export interface stateDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * })
    * 
    */
-  create<T extends stateCreateArgs>(args: Prisma.SelectSubset<T, stateCreateArgs<ExtArgs>>): Prisma.Prisma__stateClient<runtime.Types.Result.GetResult<Prisma.$statePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  create<T extends StateCreateArgs>(args: Prisma.SelectSubset<T, StateCreateArgs<ExtArgs>>): Prisma.Prisma__StateClient<runtime.Types.Result.GetResult<Prisma.$StatePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Create many States.
-   * @param {stateCreateManyArgs} args - Arguments to create many States.
+   * @param {StateCreateManyArgs} args - Arguments to create many States.
    * @example
    * // Create many States
    * const state = await prisma.state.createMany({
@@ -731,11 +731,11 @@ export interface stateDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * })
    *     
    */
-  createMany<T extends stateCreateManyArgs>(args?: Prisma.SelectSubset<T, stateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  createMany<T extends StateCreateManyArgs>(args?: Prisma.SelectSubset<T, StateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Create many States and returns the data saved in the database.
-   * @param {stateCreateManyAndReturnArgs} args - Arguments to create many States.
+   * @param {StateCreateManyAndReturnArgs} args - Arguments to create many States.
    * @example
    * // Create many States
    * const state = await prisma.state.createManyAndReturn({
@@ -755,11 +755,11 @@ export interface stateDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
-  createManyAndReturn<T extends stateCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, stateCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$statePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+  createManyAndReturn<T extends StateCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, StateCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StatePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
   /**
    * Delete a State.
-   * @param {stateDeleteArgs} args - Arguments to delete one State.
+   * @param {StateDeleteArgs} args - Arguments to delete one State.
    * @example
    * // Delete one State
    * const State = await prisma.state.delete({
@@ -769,11 +769,11 @@ export interface stateDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * })
    * 
    */
-  delete<T extends stateDeleteArgs>(args: Prisma.SelectSubset<T, stateDeleteArgs<ExtArgs>>): Prisma.Prisma__stateClient<runtime.Types.Result.GetResult<Prisma.$statePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  delete<T extends StateDeleteArgs>(args: Prisma.SelectSubset<T, StateDeleteArgs<ExtArgs>>): Prisma.Prisma__StateClient<runtime.Types.Result.GetResult<Prisma.$StatePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Update one State.
-   * @param {stateUpdateArgs} args - Arguments to update one State.
+   * @param {StateUpdateArgs} args - Arguments to update one State.
    * @example
    * // Update one State
    * const state = await prisma.state.update({
@@ -786,11 +786,11 @@ export interface stateDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * })
    * 
    */
-  update<T extends stateUpdateArgs>(args: Prisma.SelectSubset<T, stateUpdateArgs<ExtArgs>>): Prisma.Prisma__stateClient<runtime.Types.Result.GetResult<Prisma.$statePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  update<T extends StateUpdateArgs>(args: Prisma.SelectSubset<T, StateUpdateArgs<ExtArgs>>): Prisma.Prisma__StateClient<runtime.Types.Result.GetResult<Prisma.$StatePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Delete zero or more States.
-   * @param {stateDeleteManyArgs} args - Arguments to filter States to delete.
+   * @param {StateDeleteManyArgs} args - Arguments to filter States to delete.
    * @example
    * // Delete a few States
    * const { count } = await prisma.state.deleteMany({
@@ -800,13 +800,13 @@ export interface stateDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * })
    * 
    */
-  deleteMany<T extends stateDeleteManyArgs>(args?: Prisma.SelectSubset<T, stateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  deleteMany<T extends StateDeleteManyArgs>(args?: Prisma.SelectSubset<T, StateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Update zero or more States.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {stateUpdateManyArgs} args - Arguments to update one or more rows.
+   * @param {StateUpdateManyArgs} args - Arguments to update one or more rows.
    * @example
    * // Update many States
    * const state = await prisma.state.updateMany({
@@ -819,11 +819,11 @@ export interface stateDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * })
    * 
    */
-  updateMany<T extends stateUpdateManyArgs>(args: Prisma.SelectSubset<T, stateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  updateMany<T extends StateUpdateManyArgs>(args: Prisma.SelectSubset<T, StateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Update zero or more States and returns the data updated in the database.
-   * @param {stateUpdateManyAndReturnArgs} args - Arguments to update many States.
+   * @param {StateUpdateManyAndReturnArgs} args - Arguments to update many States.
    * @example
    * // Update many States
    * const state = await prisma.state.updateManyAndReturn({
@@ -849,11 +849,11 @@ export interface stateDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
-  updateManyAndReturn<T extends stateUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, stateUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$statePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+  updateManyAndReturn<T extends StateUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, StateUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StatePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
   /**
    * Create or update one State.
-   * @param {stateUpsertArgs} args - Arguments to update or create a State.
+   * @param {StateUpsertArgs} args - Arguments to update or create a State.
    * @example
    * // Update or create a State
    * const state = await prisma.state.upsert({
@@ -868,14 +868,14 @@ export interface stateDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    *   }
    * })
    */
-  upsert<T extends stateUpsertArgs>(args: Prisma.SelectSubset<T, stateUpsertArgs<ExtArgs>>): Prisma.Prisma__stateClient<runtime.Types.Result.GetResult<Prisma.$statePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  upsert<T extends StateUpsertArgs>(args: Prisma.SelectSubset<T, StateUpsertArgs<ExtArgs>>): Prisma.Prisma__StateClient<runtime.Types.Result.GetResult<Prisma.$StatePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
   /**
    * Count the number of States.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {stateCountArgs} args - Arguments to filter States to count.
+   * @param {StateCountArgs} args - Arguments to filter States to count.
    * @example
    * // Count the number of States
    * const count = await prisma.state.count({
@@ -884,8 +884,8 @@ export interface stateDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    *   }
    * })
   **/
-  count<T extends stateCountArgs>(
-    args?: Prisma.Subset<T, stateCountArgs>,
+  count<T extends StateCountArgs>(
+    args?: Prisma.Subset<T, StateCountArgs>,
   ): Prisma.PrismaPromise<
     T extends runtime.Types.Utils.Record<'select', any>
       ? T['select'] extends true
@@ -924,7 +924,7 @@ export interface stateDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * Group by State.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {stateGroupByArgs} args - Group by arguments.
+   * @param {StateGroupByArgs} args - Group by arguments.
    * @example
    * // Group by city, order by createdAt, get count
    * const result = await prisma.user.groupBy({
@@ -939,14 +939,14 @@ export interface stateDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * 
   **/
   groupBy<
-    T extends stateGroupByArgs,
+    T extends StateGroupByArgs,
     HasSelectOrTake extends Prisma.Or<
       Prisma.Extends<'skip', Prisma.Keys<T>>,
       Prisma.Extends<'take', Prisma.Keys<T>>
     >,
     OrderByArg extends Prisma.True extends HasSelectOrTake
-      ? { orderBy: stateGroupByArgs['orderBy'] }
-      : { orderBy?: stateGroupByArgs['orderBy'] },
+      ? { orderBy: StateGroupByArgs['orderBy'] }
+      : { orderBy?: StateGroupByArgs['orderBy'] },
     OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>,
     ByFields extends Prisma.MaybeTupleToUnion<T['by']>,
     ByValid extends Prisma.Has<ByFields, OrderFields>,
@@ -995,23 +995,23 @@ export interface stateDelegate<ExtArgs extends runtime.Types.Extensions.Internal
           ? never
           : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
       }[OrderFields]
-  >(args: Prisma.SubsetIntersection<T, stateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  >(args: Prisma.SubsetIntersection<T, StateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 /**
- * Fields of the state model
+ * Fields of the State model
  */
-readonly fields: stateFieldRefs;
+readonly fields: StateFieldRefs;
 }
 
 /**
- * The delegate class that acts as a "Promise-like" for state.
+ * The delegate class that acts as a "Promise-like" for State.
  * Why is this prefixed with `Prisma__`?
  * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
-export interface Prisma__stateClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+export interface Prisma__StateClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  country<T extends Prisma.countryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.countryDefaultArgs<ExtArgs>>): Prisma.Prisma__countryClient<runtime.Types.Result.GetResult<Prisma.$countryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  events<T extends Prisma.state$eventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.state$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  country<T extends Prisma.CountryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CountryDefaultArgs<ExtArgs>>): Prisma.Prisma__CountryClient<runtime.Types.Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  events<T extends Prisma.State$eventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.State$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1038,412 +1038,412 @@ export interface Prisma__stateClient<T, Null = never, ExtArgs extends runtime.Ty
 
 
 /**
- * Fields of the state model
+ * Fields of the State model
  */
-export interface stateFieldRefs {
-  readonly id: Prisma.FieldRef<"state", 'Int'>
-  readonly name: Prisma.FieldRef<"state", 'String'>
-  readonly countryId: Prisma.FieldRef<"state", 'Int'>
-  readonly createdAt: Prisma.FieldRef<"state", 'DateTime'>
+export interface StateFieldRefs {
+  readonly id: Prisma.FieldRef<"State", 'Int'>
+  readonly name: Prisma.FieldRef<"State", 'String'>
+  readonly countryId: Prisma.FieldRef<"State", 'Int'>
+  readonly createdAt: Prisma.FieldRef<"State", 'DateTime'>
 }
     
 
 // Custom InputTypes
 /**
- * state findUnique
+ * State findUnique
  */
-export type stateFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StateFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the state
+   * Select specific fields to fetch from the State
    */
-  select?: Prisma.stateSelect<ExtArgs> | null
+  select?: Prisma.StateSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the state
+   * Omit specific fields from the State
    */
-  omit?: Prisma.stateOmit<ExtArgs> | null
+  omit?: Prisma.StateOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.stateInclude<ExtArgs> | null
+  include?: Prisma.StateInclude<ExtArgs> | null
   /**
-   * Filter, which state to fetch.
+   * Filter, which State to fetch.
    */
-  where: Prisma.stateWhereUniqueInput
+  where: Prisma.StateWhereUniqueInput
 }
 
 /**
- * state findUniqueOrThrow
+ * State findUniqueOrThrow
  */
-export type stateFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StateFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the state
+   * Select specific fields to fetch from the State
    */
-  select?: Prisma.stateSelect<ExtArgs> | null
+  select?: Prisma.StateSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the state
+   * Omit specific fields from the State
    */
-  omit?: Prisma.stateOmit<ExtArgs> | null
+  omit?: Prisma.StateOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.stateInclude<ExtArgs> | null
+  include?: Prisma.StateInclude<ExtArgs> | null
   /**
-   * Filter, which state to fetch.
+   * Filter, which State to fetch.
    */
-  where: Prisma.stateWhereUniqueInput
+  where: Prisma.StateWhereUniqueInput
 }
 
 /**
- * state findFirst
+ * State findFirst
  */
-export type stateFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StateFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the state
+   * Select specific fields to fetch from the State
    */
-  select?: Prisma.stateSelect<ExtArgs> | null
+  select?: Prisma.StateSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the state
+   * Omit specific fields from the State
    */
-  omit?: Prisma.stateOmit<ExtArgs> | null
+  omit?: Prisma.StateOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.stateInclude<ExtArgs> | null
+  include?: Prisma.StateInclude<ExtArgs> | null
   /**
-   * Filter, which state to fetch.
+   * Filter, which State to fetch.
    */
-  where?: Prisma.stateWhereInput
+  where?: Prisma.StateWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of states to fetch.
+   * Determine the order of States to fetch.
    */
-  orderBy?: Prisma.stateOrderByWithRelationInput | Prisma.stateOrderByWithRelationInput[]
+  orderBy?: Prisma.StateOrderByWithRelationInput | Prisma.StateOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for states.
+   * Sets the position for searching for States.
    */
-  cursor?: Prisma.stateWhereUniqueInput
+  cursor?: Prisma.StateWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` states from the position of the cursor.
+   * Take `±n` States from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` states.
+   * Skip the first `n` States.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of states.
+   * Filter by unique combinations of States.
    */
   distinct?: Prisma.StateScalarFieldEnum | Prisma.StateScalarFieldEnum[]
 }
 
 /**
- * state findFirstOrThrow
+ * State findFirstOrThrow
  */
-export type stateFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StateFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the state
+   * Select specific fields to fetch from the State
    */
-  select?: Prisma.stateSelect<ExtArgs> | null
+  select?: Prisma.StateSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the state
+   * Omit specific fields from the State
    */
-  omit?: Prisma.stateOmit<ExtArgs> | null
+  omit?: Prisma.StateOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.stateInclude<ExtArgs> | null
+  include?: Prisma.StateInclude<ExtArgs> | null
   /**
-   * Filter, which state to fetch.
+   * Filter, which State to fetch.
    */
-  where?: Prisma.stateWhereInput
+  where?: Prisma.StateWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of states to fetch.
+   * Determine the order of States to fetch.
    */
-  orderBy?: Prisma.stateOrderByWithRelationInput | Prisma.stateOrderByWithRelationInput[]
+  orderBy?: Prisma.StateOrderByWithRelationInput | Prisma.StateOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for states.
+   * Sets the position for searching for States.
    */
-  cursor?: Prisma.stateWhereUniqueInput
+  cursor?: Prisma.StateWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` states from the position of the cursor.
+   * Take `±n` States from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` states.
+   * Skip the first `n` States.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of states.
+   * Filter by unique combinations of States.
    */
   distinct?: Prisma.StateScalarFieldEnum | Prisma.StateScalarFieldEnum[]
 }
 
 /**
- * state findMany
+ * State findMany
  */
-export type stateFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StateFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the state
+   * Select specific fields to fetch from the State
    */
-  select?: Prisma.stateSelect<ExtArgs> | null
+  select?: Prisma.StateSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the state
+   * Omit specific fields from the State
    */
-  omit?: Prisma.stateOmit<ExtArgs> | null
+  omit?: Prisma.StateOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.stateInclude<ExtArgs> | null
+  include?: Prisma.StateInclude<ExtArgs> | null
   /**
-   * Filter, which states to fetch.
+   * Filter, which States to fetch.
    */
-  where?: Prisma.stateWhereInput
+  where?: Prisma.StateWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of states to fetch.
+   * Determine the order of States to fetch.
    */
-  orderBy?: Prisma.stateOrderByWithRelationInput | Prisma.stateOrderByWithRelationInput[]
+  orderBy?: Prisma.StateOrderByWithRelationInput | Prisma.StateOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for listing states.
+   * Sets the position for listing States.
    */
-  cursor?: Prisma.stateWhereUniqueInput
+  cursor?: Prisma.StateWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` states from the position of the cursor.
+   * Take `±n` States from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` states.
+   * Skip the first `n` States.
    */
   skip?: number
   distinct?: Prisma.StateScalarFieldEnum | Prisma.StateScalarFieldEnum[]
 }
 
 /**
- * state create
+ * State create
  */
-export type stateCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StateCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the state
+   * Select specific fields to fetch from the State
    */
-  select?: Prisma.stateSelect<ExtArgs> | null
+  select?: Prisma.StateSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the state
+   * Omit specific fields from the State
    */
-  omit?: Prisma.stateOmit<ExtArgs> | null
+  omit?: Prisma.StateOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.stateInclude<ExtArgs> | null
+  include?: Prisma.StateInclude<ExtArgs> | null
   /**
-   * The data needed to create a state.
+   * The data needed to create a State.
    */
-  data: Prisma.XOR<Prisma.stateCreateInput, Prisma.stateUncheckedCreateInput>
+  data: Prisma.XOR<Prisma.StateCreateInput, Prisma.StateUncheckedCreateInput>
 }
 
 /**
- * state createMany
+ * State createMany
  */
-export type stateCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StateCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to create many states.
+   * The data used to create many States.
    */
-  data: Prisma.stateCreateManyInput | Prisma.stateCreateManyInput[]
+  data: Prisma.StateCreateManyInput | Prisma.StateCreateManyInput[]
   skipDuplicates?: boolean
 }
 
 /**
- * state createManyAndReturn
+ * State createManyAndReturn
  */
-export type stateCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StateCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the state
+   * Select specific fields to fetch from the State
    */
-  select?: Prisma.stateSelectCreateManyAndReturn<ExtArgs> | null
+  select?: Prisma.StateSelectCreateManyAndReturn<ExtArgs> | null
   /**
-   * Omit specific fields from the state
+   * Omit specific fields from the State
    */
-  omit?: Prisma.stateOmit<ExtArgs> | null
+  omit?: Prisma.StateOmit<ExtArgs> | null
   /**
-   * The data used to create many states.
+   * The data used to create many States.
    */
-  data: Prisma.stateCreateManyInput | Prisma.stateCreateManyInput[]
+  data: Prisma.StateCreateManyInput | Prisma.StateCreateManyInput[]
   skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.stateIncludeCreateManyAndReturn<ExtArgs> | null
+  include?: Prisma.StateIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
- * state update
+ * State update
  */
-export type stateUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StateUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the state
+   * Select specific fields to fetch from the State
    */
-  select?: Prisma.stateSelect<ExtArgs> | null
+  select?: Prisma.StateSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the state
+   * Omit specific fields from the State
    */
-  omit?: Prisma.stateOmit<ExtArgs> | null
+  omit?: Prisma.StateOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.stateInclude<ExtArgs> | null
+  include?: Prisma.StateInclude<ExtArgs> | null
   /**
-   * The data needed to update a state.
+   * The data needed to update a State.
    */
-  data: Prisma.XOR<Prisma.stateUpdateInput, Prisma.stateUncheckedUpdateInput>
+  data: Prisma.XOR<Prisma.StateUpdateInput, Prisma.StateUncheckedUpdateInput>
   /**
-   * Choose, which state to update.
+   * Choose, which State to update.
    */
-  where: Prisma.stateWhereUniqueInput
+  where: Prisma.StateWhereUniqueInput
 }
 
 /**
- * state updateMany
+ * State updateMany
  */
-export type stateUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StateUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to update states.
+   * The data used to update States.
    */
-  data: Prisma.XOR<Prisma.stateUpdateManyMutationInput, Prisma.stateUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.StateUpdateManyMutationInput, Prisma.StateUncheckedUpdateManyInput>
   /**
-   * Filter which states to update
+   * Filter which States to update
    */
-  where?: Prisma.stateWhereInput
+  where?: Prisma.StateWhereInput
   /**
-   * Limit how many states to update.
+   * Limit how many States to update.
    */
   limit?: number
 }
 
 /**
- * state updateManyAndReturn
+ * State updateManyAndReturn
  */
-export type stateUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StateUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the state
+   * Select specific fields to fetch from the State
    */
-  select?: Prisma.stateSelectUpdateManyAndReturn<ExtArgs> | null
+  select?: Prisma.StateSelectUpdateManyAndReturn<ExtArgs> | null
   /**
-   * Omit specific fields from the state
+   * Omit specific fields from the State
    */
-  omit?: Prisma.stateOmit<ExtArgs> | null
+  omit?: Prisma.StateOmit<ExtArgs> | null
   /**
-   * The data used to update states.
+   * The data used to update States.
    */
-  data: Prisma.XOR<Prisma.stateUpdateManyMutationInput, Prisma.stateUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.StateUpdateManyMutationInput, Prisma.StateUncheckedUpdateManyInput>
   /**
-   * Filter which states to update
+   * Filter which States to update
    */
-  where?: Prisma.stateWhereInput
+  where?: Prisma.StateWhereInput
   /**
-   * Limit how many states to update.
+   * Limit how many States to update.
    */
   limit?: number
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.stateIncludeUpdateManyAndReturn<ExtArgs> | null
+  include?: Prisma.StateIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
- * state upsert
+ * State upsert
  */
-export type stateUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StateUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the state
+   * Select specific fields to fetch from the State
    */
-  select?: Prisma.stateSelect<ExtArgs> | null
+  select?: Prisma.StateSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the state
+   * Omit specific fields from the State
    */
-  omit?: Prisma.stateOmit<ExtArgs> | null
+  omit?: Prisma.StateOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.stateInclude<ExtArgs> | null
+  include?: Prisma.StateInclude<ExtArgs> | null
   /**
-   * The filter to search for the state to update in case it exists.
+   * The filter to search for the State to update in case it exists.
    */
-  where: Prisma.stateWhereUniqueInput
+  where: Prisma.StateWhereUniqueInput
   /**
-   * In case the state found by the `where` argument doesn't exist, create a new state with this data.
+   * In case the State found by the `where` argument doesn't exist, create a new State with this data.
    */
-  create: Prisma.XOR<Prisma.stateCreateInput, Prisma.stateUncheckedCreateInput>
+  create: Prisma.XOR<Prisma.StateCreateInput, Prisma.StateUncheckedCreateInput>
   /**
-   * In case the state was found with the provided `where` argument, update it with this data.
+   * In case the State was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<Prisma.stateUpdateInput, Prisma.stateUncheckedUpdateInput>
+  update: Prisma.XOR<Prisma.StateUpdateInput, Prisma.StateUncheckedUpdateInput>
 }
 
 /**
- * state delete
+ * State delete
  */
-export type stateDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StateDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the state
+   * Select specific fields to fetch from the State
    */
-  select?: Prisma.stateSelect<ExtArgs> | null
+  select?: Prisma.StateSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the state
+   * Omit specific fields from the State
    */
-  omit?: Prisma.stateOmit<ExtArgs> | null
+  omit?: Prisma.StateOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.stateInclude<ExtArgs> | null
+  include?: Prisma.StateInclude<ExtArgs> | null
   /**
-   * Filter which state to delete.
+   * Filter which State to delete.
    */
-  where: Prisma.stateWhereUniqueInput
+  where: Prisma.StateWhereUniqueInput
 }
 
 /**
- * state deleteMany
+ * State deleteMany
  */
-export type stateDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StateDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which states to delete
+   * Filter which States to delete
    */
-  where?: Prisma.stateWhereInput
+  where?: Prisma.StateWhereInput
   /**
-   * Limit how many states to delete.
+   * Limit how many States to delete.
    */
   limit?: number
 }
 
 /**
- * state.events
+ * State.events
  */
-export type state$eventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type State$eventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Event
    */
@@ -1465,19 +1465,19 @@ export type state$eventsArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 }
 
 /**
- * state without action
+ * State without action
  */
-export type stateDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type StateDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the state
+   * Select specific fields to fetch from the State
    */
-  select?: Prisma.stateSelect<ExtArgs> | null
+  select?: Prisma.StateSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the state
+   * Omit specific fields from the State
    */
-  omit?: Prisma.stateOmit<ExtArgs> | null
+  omit?: Prisma.StateOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.stateInclude<ExtArgs> | null
+  include?: Prisma.StateInclude<ExtArgs> | null
 }

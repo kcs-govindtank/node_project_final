@@ -53,45 +53,53 @@ enum OtpType {
   RESET_PASSWORD
 }
 
-model country {
-  id        Int      @id @default(autoincrement())
-  name      String
-  code      String
-  createdAt DateTime @default(now())
-
-  states state[]
-  events Event[]
-}
-
-model state {
-  id        Int      @id @default(autoincrement())
-  name      String
-  countryId Int
-  createdAt DateTime @default(now())
-  country   country  @relation(fields: [countryId], references: [id], onDelete: Cascade)
-
-  events Event[]
-}
-
-model category {
+model Category {
   id            Int           @id @default(autoincrement())
-  categoryName  String
+  categoryName  String        @unique
   isActive      Boolean       @default(true)
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
   events        Event[]
-  subcategories subcategory[]
+  subcategories SubCategory[]
+
+  @@map("Category") // Explicit table name mapping
 }
 
-model subcategory {
+model SubCategory {
   id              Int      @id @default(autoincrement())
   categoryId      Int
-  subcategoryName String
+  subcategoryName String   @unique
   isActive        Boolean  @default(true)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
-  category        category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  category        Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   events          Event[]
+
+  @@map("SubCategory") // Explicit table name mapping
+}
+
+model Country {
+  id        Int      @id @default(autoincrement())
+  name      String
+  code      String   @unique
+  createdAt DateTime @default(now())
+
+  states State[]
+  events Event[]
+
+  @@map("Country") // Explicit table name mapping
+}
+
+model State {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  countryId Int
+  createdAt DateTime @default(now())
+  country   Country  @relation(fields: [countryId], references: [id], onDelete: Cascade)
+
+  events Event[]
+
+  @@map("State") // Explicit table name mapping
 }
 
 model Event {
@@ -113,10 +121,10 @@ model Event {
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
 
-  category    category?    @relation(fields: [categoryId], references: [id])
-  subcategory subcategory? @relation(fields: [subcategoryId], references: [id])
-  country     country?     @relation(fields: [countryId], references: [id])
-  state       state?       @relation(fields: [stateId], references: [id])
+  category    Category?    @relation(fields: [categoryId], references: [id])
+  subcategory SubCategory? @relation(fields: [subcategoryId], references: [id])
+  country     Country?     @relation(fields: [countryId], references: [id])
+  state       State?       @relation(fields: [stateId], references: [id])
 }
 
 enum PublishStatus {

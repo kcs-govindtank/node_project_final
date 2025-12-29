@@ -1,3 +1,4 @@
+// import { PrismaClient } from '../src/generated/prisma/client.js';
 import { PrismaClient, PublishStatus } from "../src/generated/prisma/client.js";
 import { PrismaPg } from "@prisma/adapter-pg";
 
@@ -8,63 +9,111 @@ const adapter = new PrismaPg({ connectionString });
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
-  // Seed countries
-  await prisma.country.createMany({
-    data: [
-      { name: 'India', code: '+91', createdAt: new Date() },
-      { name: 'United States', code: '+1', createdAt: new Date() },
-      { name: 'United Kingdom', code: '+44', createdAt: new Date() },
-      { name: 'Australia', code: '+3', createdAt: new Date() },
-      { name: 'Canada', code: '+2', createdAt: new Date() },
-    ],
-    skipDuplicates: true,
+  // Only truncate tables that actually exist
+  const tables = await prisma.$queryRaw`SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'`;
+  const existingTables = (tables as Array<{ table_name: string }>).map(t => t.table_name);
+
+  const targets = ['Country', 'State', 'Category', 'SubCategory', 'Event'];
+  const tablesToTruncate = targets.filter(t => existingTables.includes(t));
+
+  if (tablesToTruncate.length > 0) {
+    const quoted = tablesToTruncate.map(t => `"${t}"`).join(', ');
+    await prisma.$executeRawUnsafe(`TRUNCATE TABLE ${quoted} RESTART IDENTITY CASCADE`);
+  }
+
+  // Seed countries - use upsert instead of create to avoid duplicates
+  const Countries = [
+    { name: 'India', code: '+91' },
+    { name: 'United States', code: '+1' },
+    { name: 'United Kingdom', code: '+44' },
+    { name: 'Australia', code: '+61' },
+    { name: 'Canada', code: '+1' },
+  ];
+
+  for (const country of Countries) {
+    await prisma.country.upsert({
+      where: { code: country.code },
+      update: {},
+      create: { ...country, createdAt: new Date() },
+    });
+  }
+
+  // Fetch actual country IDs from the database
+  const seededCountries = await prisma.country.findMany({
+    orderBy: { id: 'asc' }
   });
 
-  // Seed states
-  await prisma.state.createMany({
-    data: [
-      // India
-      { name: 'Gujarat', countryId: 1, createdAt: new Date() },
-      { name: 'Maharashtra', countryId: 1, createdAt: new Date() },
-      // United States
-      { name: 'California', countryId: 2, createdAt: new Date() },
-      { name: 'Texas', countryId: 2, createdAt: new Date() },
-      // United Kingdom
-      { name: 'England', countryId: 3, createdAt: new Date() },
-      { name: 'Scotland', countryId: 3, createdAt: new Date() },
-      // Australia
-      { name: 'New South Wales', countryId: 4, createdAt: new Date() },
-      { name: 'Victoria', countryId: 4, createdAt: new Date() },
-      // Canada
-      { name: 'Ontario', countryId: 5, createdAt: new Date() },
-      { name: 'Quebec', countryId: 5, createdAt: new Date() },
-    ],
-    skipDuplicates: true,
-  });
+  // Create a map of country code to ID
+  const countryIdMap: Record<string, number> = {};
+  for (const country of seededCountries) {
+    countryIdMap[country.code] = country.id;
+  }
+
+  // Seed states using the actual country IDs
+  const states = [
+    // India
+    { name: 'Gujarat', countryCode: '+91' },
+    { name: 'Maharashtra', countryCode: '+91' },
+    // United States
+    { name: 'California', countryCode: '+1' },
+    { name: 'Texas', countryCode: '+1' },
+    // United Kingdom
+    { name: 'England', countryCode: '+44' },
+    { name: 'Scotland', countryCode: '+44' },
+    // Australia
+    { name: 'New South Wales', countryCode: '+61' },
+    { name: 'Victoria', countryCode: '+61' },
+    // Canada
+    { name: 'Ontario', countryCode: '+1' },
+    { name: 'Quebec', countryCode: '+1' },
+  ];
+
+  for (const state of states) {
+    const countryId = countryIdMap[state.countryCode];
+    if (countryId) {
+      await prisma.state.create({
+        data: { 
+          name: state.name, 
+          countryId: countryId,
+          createdAt: new Date() 
+        },
+      });
+    }
+  }
 
   // Seed categories
-  await prisma.category.createMany({
-    data: [
-      { categoryName: 'Spiritual', isActive: true, createdAt: new Date(), updatedAt: new Date() },
-      { categoryName: 'Education', isActive: true, createdAt: new Date(), updatedAt: new Date() },
-      { categoryName: 'Health', isActive: true, createdAt: new Date(), updatedAt: new Date() },
-      { categoryName: 'Technology', isActive: true, createdAt: new Date(), updatedAt: new Date() },
-      { categoryName: 'Community', isActive: true, createdAt: new Date(), updatedAt: new Date() },
-    ],
-    skipDuplicates: true,
-  });
+  const categories = [
+    { categoryName: 'Spiritual' },
+    { categoryName: 'Education' },
+    { categoryName: 'Health' },
+    { categoryName: 'Technology' },
+    { categoryName: 'Community' },
+  ];
+
+  for (const category of categories) {
+    await prisma.category.upsert({
+      where: { categoryName: category.categoryName },
+      update: {},
+      create: { ...category, isActive: true, createdAt: new Date(), updatedAt: new Date() },
+    });
+  }
 
   // Seed subcategories
-  await prisma.subcategory.createMany({
-    data: [
-      { categoryId: 1, subcategoryName: 'Bhajan', isActive: true, createdAt: new Date(), updatedAt: new Date() },
-      { categoryId: 2, subcategoryName: 'Satsang', isActive: true, createdAt: new Date(), updatedAt: new Date() },
-      { categoryId: 3, subcategoryName: 'Online Courses', isActive: true, createdAt: new Date(), updatedAt: new Date() },
-      { categoryId: 4, subcategoryName: 'Mental Wellness', isActive: true, createdAt: new Date(), updatedAt: new Date() },
-      { categoryId: 5, subcategoryName: 'Mobile Apps', isActive: true, createdAt: new Date(), updatedAt: new Date() },
-    ],
-    skipDuplicates: true,
-  });
+  const subcategories = [
+    { categoryId: 1, subcategoryName: 'Bhajan' },
+    { categoryId: 2, subcategoryName: 'Satsang' },
+    { categoryId: 3, subcategoryName: 'Online Courses' },
+    { categoryId: 4, subcategoryName: 'Mental Wellness' },
+    { categoryId: 5, subcategoryName: 'Mobile Apps' },
+  ];
+
+  for (const subcategory of subcategories) {
+    await prisma.subCategory.upsert({
+      where: { subcategoryName: subcategory.subcategoryName },
+      update: {},
+      create: { ...subcategory, isActive: true, createdAt: new Date(), updatedAt: new Date() },
+    });
+  }
 
   console.log('Seed data inserted successfully!');
 }

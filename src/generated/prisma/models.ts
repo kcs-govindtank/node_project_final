@@ -10,9 +10,9 @@
  */
 export type * from './models/User.ts'
 export type * from './models/Otp.ts'
-export type * from './models/country.ts'
-export type * from './models/state.ts'
-export type * from './models/category.ts'
-export type * from './models/subcategory.ts'
+export type * from './models/Category.ts'
+export type * from './models/SubCategory.ts'
+export type * from './models/Country.ts'
+export type * from './models/State.ts'
 export type * from './models/Event.ts'
 export type * from './commonInputTypes.ts'
